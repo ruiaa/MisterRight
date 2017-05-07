@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="hobby"
+            type="com.misterright.model.entity.MapInfo.Hobby"/>
+
+        <variable
+            name="editing"
+            type="boolean"/>
+
+        <variable
+            name="type"
+            type="int"/>
+
+        <import type="android.view.View"/>
+
+        <import type="com.misterright.util.ConvertUtil"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/info_detail_leisure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:paddingLeft="@dimen/info_detail_left_padding"
+        android:visibility="@{(hobby.noHobbyItem(type)&amp;&amp;!editing) ? View.GONE:View.VISIBLE}"
+        >
+
+        <ImageView
+            android:id="@+id/info_hobby_label_icon"
+            android:layout_width="@dimen/label_hobby_height"
+            android:layout_height="@dimen/label_hobby_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@{hobby.getIconId(type)}"/>
+
+        <TextView
+            style="@style/text_4_grey_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/info_hobby_label_icon"
+            android:gravity="center"
+            android:text="@string/no_hobby_label"
+            android:visibility="@{(hobby.noHobbyItem(type)&amp;&amp;editing) ? View.VISIBLE:View.GONE}"
+            />
+
+        <include
+            android:id="@+id/info_hobby_label_open_more"
+            layout="@layout/view_open_more"
+            bind:show="@{editing ? View.VISIBLE:View.GONE}"
+            bind:rightMargin="@{6}"
+            />
+
+        <com.misterright.ui.widget.LabelLayout
+            android:id="@+id/info_hobby_label_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@id/info_hobby_label_open_more"
+            android:layout_toRightOf="@id/info_hobby_label_icon"
+            android:paddingLeft="@dimen/sp_6"
+            android:paddingRight="@{editing ? ConvertUtil.dp2px(20):ConvertUtil.dp2px(8)}"
+            android:visibility="@{hobby.noHobbyItem(type)? View.GONE:View.VISIBLE}"
+            app:child_layout="@layout/view_label_hobby"
+            app:horizontal_spacing="@dimen/dp_6"
+            app:textList="@{hobby.getHobbyItem(type)}"
+            app:vertical_spacing="@dimen/sp_6"
+            />
+    </RelativeLayout>
+
+</layout>

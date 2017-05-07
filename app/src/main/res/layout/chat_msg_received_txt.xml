@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="chatMessage"
+            type="com.hyphenate.chat.EMMessage"
+            />
+        <variable
+            name="showTimeStamp"
+            type="boolean"
+            />
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.DateUtil"/>
+        <import type="com.hyphenate.chat.EMTextMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage.Status"/>
+        <import type="com.hyphenate.chat.EMMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage"/>
+        <import type="com.misterright.model.MisterData"/>
+        <import type="com.misterright.model.entity.GlobalInfo"/>
+        <import type="com.misterright.model.entity.UserInfo"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!-- 时间-->
+        <include layout="@layout/view_chat_time"
+                 bind:time="@{DateUtil.toTimeStamp(chatMessage.getMsgTime())}"
+                 bind:show="@{showTimeStamp?View.VISIBLE:View.GONE}"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/chat_bubble_margin_v"
+            android:layout_marginBottom="@dimen/chat_bubble_margin_v"
+            android:paddingRight="@dimen/chat_bubble_margin_to_pair"
+            >
+
+            <!--头像-->
+            <include layout="@layout/view_chat_head"
+                     android:id="@+id/chat_user_head"
+                     bind:isSent="@{false}"/>
+
+            <!--内容 气泡-->
+            <RelativeLayout
+                android:id="@+id/chat_bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/chat_user_head"
+                android:background="@drawable/chat_msg_received_bg"
+                >
+
+                <TextView
+                    style="@style/text_1_grey_5"
+                    android:id="@+id/chat_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:autoLink="web"
+                    android:lineSpacingExtra="@dimen/sp_2"
+                    android:text="@{((com.hyphenate.chat.EMTextMessageBody)(chatMessage.getBody())).getMessage()}"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

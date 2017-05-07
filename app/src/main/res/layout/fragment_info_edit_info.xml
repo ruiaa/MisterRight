@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="mapInfo"
+            type="com.misterright.model.entity.MapInfo"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:scrollbars="none"
+            >
+
+            <include
+                layout="@layout/view_info_detail"
+                android:id="@+id/info_edit_detail"
+                bind:editable="@{false}"
+                bind:mapInfo="@{mapInfo}"
+                bind:editing="@{true}"
+                />
+
+        </ScrollView>
+
+    </RelativeLayout>
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+       >
+
+    <data>
+        <variable
+            name="hobbyLabel"
+            type="String"/>
+        <variable
+            name="hobbyIsSelect"
+            type="boolean"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_edit_hobby_item_height"
+        >
+
+        <TextView
+            style="@style/text_4_grey_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:maxLines="1"
+            android:text="@{hobbyLabel}"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:layout_marginRight="@dimen/dp_26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_selected_circle"
+            android:visibility="@{hobbyIsSelect ? View.VISIBLE : View.GONE}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0.5"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            />
+
+    </RelativeLayout>
+
+</layout>

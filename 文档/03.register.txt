@@ -1,0 +1,62 @@
+1．	注册接口
+============================================================================================
+1.1	判断注册时是否需要邀请码(ok)：
+    原接口:GET /register/invite_check
+    现接口:POST http://119.29.229.131:8090/misterright/appRegisteredAction?handler=inviteCheck
+  client->server:
+    {}
+  server->client:
+    {
+        "code"："200"，
+        "data"： {
+            "need_invite_code":true # true:表示需要邀请码 false:表示不需要邀请码
+        }
+    }
+  
+
+===========================================================================================
+1.2	发邀请码给服务器进行确认(OK)：
+    原接口:POST /register/invite_check
+    现接口:POST http://119.29.229.131:8090/misterright/appRegisteredAction?handler=inviteCheckQuery
+ client->server:
+    {
+        "invite_code":"123456"
+    }
+ server->client:
+    {
+        "code":200,
+        "data": {
+            "invite_uid": 10000001 # 邀请码拥有者id
+        }
+    }
+===================================================================================================
+1.3	获取手机验证码(ok)：
+    原接口:POST /register/phone_code
+    现接口:POST http://119.29.229.131:8090/misterright/appRegisteredAction?handler=getPhoneCode
+    client->server:
+    {
+        "phone_num":"13023282871"
+    }
+    server->client:
+    {
+        "code":200,
+        "data":{}
+    }
+====================================================================================================
+1.4	将验证码和密码发给服务器(ok)：
+    原接口:POST /register/user
+    现接口:POST http://119.29.229.131:8090/misterright/appRegisteredAction?handler=registeredUser
+    client->server:
+    {
+        "phone_num":"13023282871",//被邀请者的手机号码
+        "valid_code":"987654" // 验证码
+        "pwd":"md5",
+        "invite_uid": 10001 // 邀请者的id，服务器收到后给所有者加1T币
+    }
+    server->client:
+    {
+        "code": 200,
+        "data": {}        
+    }
+    
+====================================================================================================

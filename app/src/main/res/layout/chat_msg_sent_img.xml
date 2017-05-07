@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="chatMessage"
+            type="com.hyphenate.chat.EMMessage"
+            />
+        <variable
+            name="showTimeStamp"
+            type="boolean"
+            />
+        <import type="com.misterright.util.storage.FileStorage"/>
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.DateUtil"/>
+        <import type="com.hyphenate.chat.EMImageMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage.Status"/>
+        <import type="com.hyphenate.chat.EMMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage"/>
+        <import type="com.misterright.model.MisterData"/>
+        <import type="com.misterright.model.entity.GlobalInfo"/>
+        <import type="com.misterright.model.entity.UserInfo"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <!-- 时间-->
+        <include layout="@layout/view_chat_time"
+                 bind:time="@{DateUtil.toTimeStamp(chatMessage.getMsgTime())}"
+                 bind:show="@{showTimeStamp?View.VISIBLE:View.GONE}"
+                 />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/chat_bubble_margin_v"
+            android:layout_marginBottom="@dimen/chat_bubble_margin_v"
+            android:paddingLeft="@dimen/chat_bubble_margin_to_pair"
+            >
+
+            <!--头像-->
+            <include layout="@layout/view_chat_head"
+                     android:id="@+id/chat_user_head"
+                     bind:isSent="@{true}"/>
+
+            <!--内容-->
+            <RelativeLayout
+                android:id="@+id/chat_bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/chat_user_head"
+                android:background="@drawable/chat_msg_sent_bg"
+                >
+
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:id="@+id/chat_msg_img_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/chat_msg_img_width"
+                    android:maxHeight="@dimen/chat_msg_img_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitStart"
+                    app:imageUrl="@{FileStorage.checkExists(((EMImageMessageBody) chatMessage.getBody()).getLocalUrl()) ? ((EMImageMessageBody) chatMessage.getBody()).getLocalUrl() : ((EMImageMessageBody) chatMessage.getBody()).getThumbnailUrl()}"
+                    />
+
+            </RelativeLayout>
+
+            <!--发送失败-->
+            <ImageView
+                android:id="@+id/chat_msg_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/chat_bubble"
+                android:clickable="true"
+                android:src="@android:drawable/stat_notify_error"
+                android:visibility="@{chatMessage.status()==EMMessage.Status.FAIL ? View.VISIBLE:View.GONE}"/>
+
+            <ProgressBar
+                android:id="@+id/chat_progress_bar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/chat_bubble"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item android:drawable="@mipmap/chat_voice_sent_play0" android:duration="1" />
+    <item android:drawable="@mipmap/chat_voice_sent_play1" android:duration="200"/>
+    <item android:drawable="@mipmap/chat_voice_sent_play2" android:duration="200"/>
+    <item android:drawable="@mipmap/chat_voice_sent_play3" android:duration="200"/>
+
+
+</animation-list>

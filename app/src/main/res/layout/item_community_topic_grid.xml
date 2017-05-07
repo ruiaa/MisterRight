@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="topicItemHeight"
+            type="int"/>
+        <variable
+            name="topicItemText"
+            type="String"/>
+        <variable
+            name="topicItemImg"
+            type="Object"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@{topicItemHeight,default=`wrap_content`}"
+        >
+
+        <Space
+            android:id="@+id/item_community_topic_grid_center"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            />
+
+        <com.misterright.ui.widget.ImgViewGlide
+            android:id="@+id/item_community_topic_grid_img"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/item_community_topic_grid_center"
+            app:imageUrlOrId="@{topicItemImg}"
+            />
+
+        <TextView
+            style="@style/text_3_grey_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_community_topic_grid_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="@{topicItemText}"
+            />
+
+    </RelativeLayout>
+
+</layout>

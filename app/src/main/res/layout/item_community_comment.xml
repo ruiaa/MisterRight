@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="comment"
+            type="com.misterright.model.entity.CommunityComment"/>
+        <variable
+            name="leftReplyCount"
+            type="android.databinding.ObservableInt"/>
+        <import type="com.misterright.util.DateUtil"/>
+        <import type="android.view.View"/>
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_20"
+        >
+
+        <!--头像-->
+        <com.misterright.ui.widget.ImgViewGlide
+            android:id="@+id/item_comment_header"
+            android:layout_width="@dimen/community_article_outline_header"
+            android:layout_height="@dimen/community_article_outline_header"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/dp_4"
+            app:imageUrl="@{comment.showHeadUrl}"
+            app:is_circle="true"
+            app:is_square="true"
+            />
+
+        <!--昵称-->
+        <TextView
+            style="@style/text_5_blue"
+            android:id="@+id/item_comment_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/item_comment_header"
+            android:textColor="@{comment.sex ? @color/text_blue:@color/text_red}"
+            android:text="@{comment.showName}"
+            />
+
+        <!--学校-->
+        <!--时间-->
+        <TextView
+            style="@style/text_6_grey_4"
+            android:id="@+id/item_comment_school_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_comment_nickname"
+            android:layout_toRightOf="@id/item_comment_header"
+            android:layout_marginTop="@dimen/dp_2"
+            android:text="@{DateUtil.replyInterval(comment.timeStamp)}"
+            />
+
+        <!--点赞-->
+<!--        <TextView
+            style="@style/text_5_grey_4"
+            android:id="@+id/item_comment_thumb_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/item_comment_header"
+            android:drawableLeft="@drawable/thumbs_up"
+            android:text="  10000"
+            />-->
+
+        <!--评论-->
+        <TextView
+            style="@style/text_4_grey_5"
+            android:id="@+id/item_comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_below="@id/item_comment_header"
+            android:layout_alignLeft="@id/item_comment_nickname"
+            android:lineSpacingExtra="@dimen/sp_4"
+            android:text="@{comment.contentDecode}"
+            />
+
+        <View
+            android:id="@+id/item_comment_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/item_comment_content"
+            android:layout_alignLeft="@id/item_comment_nickname"
+            android:background="@color/divider"
+            android:visibility="@{leftReplyCount.get()&lt;=0 ? View.GONE:View.VISIBLE}"
+            />
+
+        <!--回复-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/item_comment_reply"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/item_comment_divider"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:layout_alignLeft="@id/item_comment_nickname"
+            />
+
+        <!--展开折叠-->
+        <TextView
+            style="@style/text_5_grey_4"
+            android:id="@+id/item_comment_reply_click_open_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/item_comment_reply"
+            android:paddingBottom="@dimen/dp_20"
+            android:text="@{String.format(@string/community_click_to_open_more_reply,String.valueOf(leftReplyCount.get()))}"
+            android:visibility="@{leftReplyCount.get()&lt;=0 ? View.GONE:View.VISIBLE}"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            />
+
+    </RelativeLayout>
+
+</layout>

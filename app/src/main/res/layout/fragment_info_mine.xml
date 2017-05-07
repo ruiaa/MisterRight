@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="mapInfo"
+            type="com.misterright.model.entity.MapInfo"/>
+
+        <variable
+            name="editable"
+            type="boolean"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--        头像-->
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:id="@+id/info_detail_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:height_from_width="0.8"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:background="@color/divider"
+                    android:visibility="@{mapInfo.getAlbumSize()==0&amp;&amp;!editable  ? View.GONE:View.VISIBLE}"
+                    />
+                <!--        8张图-->
+                <com.misterright.ui.widget.NineImg
+                    android:id="@+id/info_detail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nineimg_max_count="8"
+                    />
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_14"
+                    android:background="@color/divider"
+                    android:visibility="@{mapInfo.getAlbumSize()==0&amp;&amp;!editable ? View.GONE:View.VISIBLE}"
+                    />
+                <!--        详细资料-->
+                <include
+                    layout="@layout/view_info_detail"
+                    android:id="@+id/view_info_detail"
+                    bind:editable="@{editable}"
+                    bind:mapInfo="@{mapInfo}"
+                    bind:editing="@{false}"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include layout="@layout/view_toolbar"/>
+
+    </RelativeLayout>
+
+
+<!--    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:id="@+id/info_detail_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:height_from_width="0.8"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:background="@color/divider"
+                    />
+                <com.misterright.ui.widget.NineImg
+                    android:id="@+id/info_detail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nineimg_max_count="8"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:background="@color/divider"
+                    />
+
+                <include
+                    layout="@layout/view_info_detail"
+                    android:id="@+id/view_info_detail"
+                    bind:editable="@{editable}"
+                    bind:mapInfo="@{mapInfo}"
+                    bind:editing="@{false}"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <include layout="@layout/view_appbar_toolbar"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="134dp"
+            android:layout_height="58dp"
+            android:minWidth="120dp"
+            android:layout_gravity="right|bottom"
+            android:elevation="4dp"
+            app:elevation="4dp"
+            app:layout_anchor="@id/info"
+            app:borderWidth="0dp"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_behavior="com.misterright.ui.widget.ScrollFabBehavior"/>
+    </android.support.design.widget.CoordinatorLayout>-->
+
+</layout>

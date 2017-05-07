@@ -1,0 +1,170 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="meetInfo"
+            type="com.misterright.model.entity.UserInfo"
+            />
+
+        <variable
+            name="time"
+            type="android.databinding.ObservableLong"
+            />
+
+        <variable
+            name="nextTime"
+            type="String"/>
+
+        <import type="com.misterright.model.entity.MapInfo"
+            />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <!-- 516 -->
+        <!--水平空白分割 13 上下取6 (1.16%)-->
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+
+            <!--34      6.59-->
+            <!--全取12-->
+            <!--46      8.91-->
+            <!--min 22-->
+            <!--时间-->
+            <RelativeLayout
+                android:id="@+id/view_timer_layout"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="8.91%"
+                android:gravity="center_vertical"
+                >
+
+                <include
+                    layout="@layout/view_timer"
+                    bind:showHour="@{true}"
+                    bind:time="@{time.get()}"
+                    />
+
+            </RelativeLayout>
+
+
+
+            <!--24      4.65-->
+            <!--12      2.32-->
+            <!--距离下次匹配时间-->
+            <TextView
+                android:id="@+id/meet_next_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_timer_layout"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:text="@{@string/next_map_time_left+`: `+nextTime}"
+                />
+
+
+
+            <!--312     60.46-->
+            <!--头像-->
+            <com.misterright.ui.widget.ImgViewGlide
+                android:id="@+id/meet_head"
+                app:layout_heightPercent="60.46%"
+                app:layout_aspectRatio="100%"
+                app:layout_marginTopPercent="1.16%"
+                app:layout_marginBottomPercent="1.16%"
+                android:layout_below="@id/meet_next_time"
+                android:layout_centerHorizontal="true"
+                app:corner="@dimen/dp_4"
+                app:is_square="true"
+                app:qiniu="@{meetInfo.headUrl}"
+                />
+            <!--app:imageUrl="@{meetInfo.mapInfo.headUrl}"-->
+
+
+
+            <!--30      5.81-->
+            <!--姓名 性别 职业-->
+            <LinearLayout
+                android:id="@+id/meet_name_job"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="5.81%"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:orientation="horizontal"
+                android:layout_below="@id/meet_head"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    style="@style/text_1_grey_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:text="@{meetInfo.mapInfo.baseInfo.getGradeStr()}"/>
+
+<!--                <TextView
+                    style="@style/text_6_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sex_background"
+                    android:drawableLeft="@mipmap/icon_male"
+                    android:drawablePadding="4dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="@{meetInfo.mapInfo.baseInfo.age[0]}"
+                    />-->
+
+                <TextView
+                    style="@style/text_3_grey_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{meetInfo.mapInfo.baseInfo.getSchoolStr()}"/>
+
+            </LinearLayout>
+
+
+
+            <!--34      6.59-->
+            <!--22      4.26-->
+            <!--兴趣 标签-->
+            <com.misterright.ui.widget.LabelLayout
+                android:id="@+id/meet_interest_label"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="6.59%"
+                android:minHeight="@dimen/label_hobby_height"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:layout_below="@id/meet_name_job"
+                app:child_layout="@layout/view_label"
+                app:horizontal_spacing="@dimen/dp_8"
+                app:line_count="1"
+                app:textList="@{meetInfo.mapInfo.getOneListHobby()}"
+                />
+
+
+
+            <!--56      10.85-->
+            <!--加入按钮-->
+            <Button
+                android:layout_width="match_parent"
+                app:layout_heightPercent="10%"
+                app:layout_marginTopPercent="1.16%"
+                android:layout_marginLeft="@dimen/bid_button_margin_h"
+                android:layout_marginRight="@dimen/bid_button_margin_h"
+                android:layout_below="@id/meet_interest_label"
+                android:background="@drawable/button_background"
+                android:text="@string/invite_friend"
+                />
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

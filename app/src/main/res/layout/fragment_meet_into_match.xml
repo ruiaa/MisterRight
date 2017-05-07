@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="time"
+            type="android.databinding.ObservableLong"
+            />
+        <variable
+            name="meetSuccess"
+            type="android.databinding.ObservableLong"/>
+        <variable
+            name="hadJoin"
+            type="boolean"/>
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.StringStyles.RichText"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/meet_into_match_bg"
+        >
+
+        <include layout="@layout/view_toolbar"/>
+
+        <!--String.format(@string/match_had_match_count,RichText.setFormatSizeSp(String.valueOf(meetSuccess.get()),@dimen/text_size_30))-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/meet_success_count_height"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="@dimen/meet_success_count_height"
+            android:background="#50000000"
+            >
+            <TextView
+                style="@style/text_1_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left|start"
+                android:text="@{RichText.newRichText(String.format(@string/match_had_match_count,` `+meetSuccess.get()+` `)).setSizeInPx(String.valueOf(meetSuccess.get()),(int)@dimen/sp_30).build()}"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/view_timer"
+                bind:showHour="@{false}"
+                bind:time="@{time.get()}"
+                />
+
+            <TextView
+                style="@style/text_4_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_36"
+                android:text="@string/match_miss_wait_for_next"
+                android:visibility="@{hadJoin?View.INVISIBLE:View.VISIBLE}"
+                />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/big_button_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/bid_button_margin_v"
+                android:layout_marginLeft="@dimen/bid_button_margin_h"
+                android:layout_marginRight="@dimen/bid_button_margin_h"
+                android:background="@drawable/button_background_border"
+                >
+
+                <Button
+                    style="@style/text_1_white"
+                    android:id="@+id/meet_join_match_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@mipmap/icon_meet_match_two"
+                    android:background="@color/transparent"
+                    android:text="@{`  `+@string/match_two}"
+                    />
+
+            </RelativeLayout>
+
+
+            <Button
+                style="@style/text_1_white"
+                android:id="@+id/meet_join_match"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/big_button_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/bid_button_margin_v"
+                android:layout_marginLeft="@dimen/bid_button_margin_h"
+                android:layout_marginRight="@dimen/bid_button_margin_h"
+                android:gravity="center"
+                android:background="@drawable/button_background"
+                android:text="@string/join"
+                android:visibility="@{hadJoin?View.INVISIBLE:View.VISIBLE}"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

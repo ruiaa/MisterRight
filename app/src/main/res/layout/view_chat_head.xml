@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="isSent"
+            type="boolean"/>
+    </data>
+
+    <com.misterright.ui.widget.ImgViewGlide
+        android:id="@+id/chat_user_head"
+        android:layout_width="@dimen/chat_msg_head_size"
+        android:layout_height="@dimen/chat_msg_head_size"
+        android:layout_marginRight="@dimen/dp_12"
+        android:layout_alignParentRight="@{isSent}"
+        android:layout_alignParentLeft="@{!isSent}"
+        android:layout_alignParentTop="true"
+        app:is_circle="true"
+        app:is_square="true"
+        app:autoHead="@{isSent}"
+        />
+
+</layout>

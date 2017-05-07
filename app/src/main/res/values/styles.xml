@@ -1,0 +1,199 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+<!--        <item name="android:colorBackground">#f5f5f5</item>-->
+    </style>
+
+    <style name="AppTheme" parent="BaseAppTheme"/>
+
+    <style name="ActivityRegister" parent="AppTheme">
+        <item name="android:windowBackground">@mipmap/login_bg</item>
+    </style>
+
+
+
+
+
+    <!--倒计时-->
+    <style name="timer_number_style" >
+        <item name="android:layout_width">@dimen/timer_num_width</item>
+        <item name="android:layout_height">@dimen/timer_height</item>
+        <item name="android:layout_marginRight">@dimen/dp_2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:background">@drawable/border_rect</item>
+    </style>
+    <style name="timer_colon_style">
+        <item name="android:layout_width">@dimen/timer_colon_width</item>
+        <item name="android:layout_height">@dimen/timer_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+
+    <!--    标题字体    -->
+    <style name="toolbar_title" parent="text_1_white"/>
+
+    <!--    标签字体    -->
+    <style name="text_label_title" parent="text_2_blue"/>
+    <style name="text_hobby_label" parent="text_5_grey_5"/>
+    <style name="text_hobby_label_blue" parent="text_6_blue"/>
+
+
+    <!--    注册字体    -->
+    <style name="register_input_text_hint" parent="text_3_grey_5">
+        <item name="android:textSize">@dimen/register_input_hint_text_size</item>
+    </style>
+    <style name="register_input_text_label" parent="text_3_grey_5"/>
+    <style name="register_input_text_content" parent="text_2_white">
+        <item name="android:textColorHint">@color/text_grey_5</item>
+    </style>
+
+
+
+    <!--标准字体-->
+    <!--20-->
+    <style name="text_0_white">
+        <item name="android:textSize">@dimen/text_size_0</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_0_blue">
+        <item name="android:textSize">@dimen/text_size_0</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_0_grey_5">
+        <item name="android:textSize">@dimen/text_size_0</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_0_grey_4">
+        <item name="android:textSize">@dimen/text_size_0</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+    <style name="text_0_black">
+        <item name="android:textSize">@dimen/text_size_0</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
+    <!--18-->
+    <style name="text_1_white">
+        <item name="android:textSize">@dimen/text_size_1</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_1_blue">
+        <item name="android:textSize">@dimen/text_size_1</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_1_black">
+        <item name="android:textSize">@dimen/text_size_1</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+    <style name="text_1_grey_5">
+        <item name="android:textSize">@dimen/text_size_1</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_1_grey_4">
+        <item name="android:textSize">@dimen/text_size_1</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+
+    <!--16-->
+    <style name="text_2_white">
+        <item name="android:textSize">@dimen/text_size_2</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_2_black">
+        <item name="android:textSize">@dimen/text_size_2</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+    <style name="text_2_blue">
+        <item name="android:textSize">@dimen/text_size_2</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_2_grey_5">
+        <item name="android:textSize">@dimen/text_size_2</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_2_grey_4">
+        <item name="android:textSize">@dimen/text_size_2</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+
+    <!--15-->
+    <style name="text_3_white">
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_3_blue">
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_3_grey_5">
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_3_grey_4">
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+
+    <!--14-->
+    <style name="text_4_white">
+        <item name="android:textSize">@dimen/text_size_4</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_4_blue">
+        <item name="android:textSize">@dimen/text_size_4</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_4_grey_5">
+        <item name="android:textSize">@dimen/text_size_4</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_4_grey_4">
+        <item name="android:textSize">@dimen/text_size_4</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+
+    <!--12-->
+    <style name="text_5_white">
+        <item name="android:textSize">@dimen/text_size_5</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_5_blue">
+        <item name="android:textSize">@dimen/text_size_5</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_5_grey_5">
+        <item name="android:textSize">@dimen/text_size_5</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_5_grey_4">
+        <item name="android:textSize">@dimen/text_size_5</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+
+    <!--10-->
+    <style name="text_6_white">
+        <item name="android:textSize">@dimen/text_size_6</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="text_6_blue">
+        <item name="android:textSize">@dimen/text_size_6</item>
+        <item name="android:textColor">@color/text_blue</item>
+    </style>
+    <style name="text_6_grey_5">
+        <item name="android:textSize">@dimen/text_size_6</item>
+        <item name="android:textColor">@color/text_grey_5</item>
+    </style>
+    <style name="text_6_grey_4">
+        <item name="android:textSize">@dimen/text_size_6</item>
+        <item name="android:textColor">@color/text_grey_4</item>
+    </style>
+</resources>

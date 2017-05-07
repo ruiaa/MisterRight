@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="img"
+            type="int"/>
+        <variable
+            name="key"
+            type="String"/>
+        <variable
+            name="showDivider"
+            type="boolean"/>
+        <import type="android.view.View"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_menu_item_height"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        >
+
+        <ImageView
+            android:id="@+id/item_me_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/me_menu_item_left_right_padding"
+            android:layout_marginRight="@dimen/me_menu_item_left_right_padding"
+            android:src="@{img}"
+            />
+
+        <TextView
+            android:id="@+id/item_me_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_me_icon"
+            android:text="@{key}"/>
+
+        <include layout="@layout/view_open_more"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0.5"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/item_me_icon"
+            android:background="@color/divider"
+            android:visibility="@{showDivider ? View.VISIBLE : View.GONE}"/>
+
+    </RelativeLayout>
+</layout>

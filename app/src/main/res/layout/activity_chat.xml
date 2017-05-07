@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/activity_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/chat_top_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <include layout="@layout/view_toolbar"/>
+
+            <!--输入框-->
+            <com.misterright.ui.widget.ChatInputMenu
+                android:id="@+id/chat_input_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                />
+
+            <!--聊天消息列表-->
+            <FrameLayout
+                android:id="@+id/chat_msg_list_voice_recorder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:layout_above="@id/chat_input_menu"
+                >
+
+                <com.misterright.ui.widget.ChatList
+                    android:id="@+id/chat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <com.misterright.ui.widget.ChatVoiceRecorder
+                    android:id="@+id/chat_voice_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    />
+
+            </FrameLayout>
+
+
+        </RelativeLayout>
+
+        <!--表情选择-->
+        <FrameLayout
+            android:id="@+id/chat_input_emoji_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+</layout>

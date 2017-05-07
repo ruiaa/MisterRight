@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <import type="com.misterright.MisterConfig"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include layout="@layout/view_toolbar"/>
+
+        <!--下一步-->
+        <Button
+            android:id="@+id/register_add_info_register"
+            style="@style/text_1_white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/register_next_step_margin"
+            android:layout_marginRight="@dimen/register_next_step_margin"
+            android:background="@drawable/bg_button_next_step"
+            android:text="@string/register"/>
+
+
+        <!--输入-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/register_add_info_register"
+            android:layout_below="@id/toolbar"
+            android:layout_marginLeft="@dimen/register_input_left_right_margin"
+            android:layout_marginRight="@dimen/register_input_left_right_margin"
+            android:orientation="vertical"
+            >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="24"/>
+
+            <!--    昵称      -->
+            <LinearLayout
+                android:id="@+id/register_add_info_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@string/nickname"/>
+
+                <EditText
+                    style="@style/register_input_text_content"
+                    android:id="@+id/register_add_info_input_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="@{MisterConfig.NICKNAME_MAX}"
+                    android:hint="@string/hint_input_nickname"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    性别      -->
+            <RelativeLayout
+                android:id="@+id/register_add_info_sex"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                >
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:id="@+id/register_add_info_sex_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sex"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:id="@+id/register_add_info_input_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/register_add_info_sex_text"
+                    android:text="@string/hint_input_sex"
+                    />
+
+                <include layout="@layout/view_open_more"
+                         bind:show="@{View.VISIBLE}"
+                         bind:rightMargin="@{1}"/>
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    生日      -->
+            <RelativeLayout
+                android:id="@+id/register_add_info_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                >
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:id="@+id/register_add_info_birthday_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/birthday"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:id="@+id/register_add_info_input_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/register_add_info_birthday_text"
+                    android:text="@string/hint_input_birthday"
+                    />
+
+                <include layout="@layout/view_open_more"
+                         bind:show="@{View.VISIBLE}"
+                         bind:rightMargin="@{1}"/>
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    学校      -->
+            <RelativeLayout
+                android:id="@+id/register_add_info_school"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:id="@+id/register_add_info_school_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/school"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:id="@+id/register_add_info_input_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/register_add_info_school_text"
+                    android:layout_centerVertical="true"
+                    android:text="@string/hint_input_school"
+                    />
+
+                <include layout="@layout/view_open_more"
+                         bind:show="@{View.VISIBLE}"
+                         bind:rightMargin="@{1}"/>
+
+            </RelativeLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    年级      -->
+            <RelativeLayout
+                android:id="@+id/register_add_info_gradle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:id="@+id/register_add_info_gradle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:layout_centerVertical="true"
+                    android:text="@string/grade"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:id="@+id/register_add_info_input_gradle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/register_add_info_gradle_text"
+                    android:layout_centerVertical="true"
+                    android:text="@string/hint_input_gradle"
+                    />
+
+                <include layout="@layout/view_open_more"
+                    bind:show="@{View.VISIBLE}"
+                    bind:rightMargin="@{1}"/>
+                <!--<TextView
+                    style="@style/text_1_grey_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="请选择  "
+                    android:drawableRight="@mipmap/icon_open_more"/>-->
+
+            </RelativeLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    上传学生证   -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upload_student_card"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_6"
+                    android:text="@string/only_for_check"/>
+
+            </LinearLayout>
+
+            <!--    图片显示    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="120"
+                android:orientation="horizontal">
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:id="@+id/register_add_info_input_idcard"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/dp_32"
+                    android:background="@drawable/border_rect_grey_corner_0"
+                    android:src="@mipmap/icon_camera"/>
+                <Space
+                    android:layout_width="@dimen/dp_4"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="1dp"
+                    android:background="@drawable/border_rect_grey_corner_0"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/register_idcard_example"/>
+            </LinearLayout>
+
+            <!--    上传提示    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="36"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/upload"/>
+
+                <TextView
+                    style="@style/register_input_text_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/example"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="12"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

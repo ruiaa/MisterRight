@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.5"
+        android:background="@color/divider"
+        android:layout_alignParentTop="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/emotions_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        >
+
+        <ImageButton
+            android:id="@+id/emotion_tab_0_recents"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_recent_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_tab_1_people"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_people_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_tab_2_nature"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_nature_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_tab_3_objects"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_objects_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_tab_4_cars"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_places_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_tab_5_punctuation"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/ic_emoji_symbols_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:id="@+id/emotion_backspace"
+            android:background="@null"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/sym_keyboard_delete_holo_dark" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/emotions_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/emotions_tab"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/emotions_tab"
+        android:background="@color/horizontal_divider" />
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_meet_try_match_start"
+        android:title="测试相遇,开始"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_meet_try_match_stop"
+        android:title="测试相遇,结束"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item android:id="@+id/menu_meet_self_mineinfo"
+          android:title="@string/open_mine_info"
+          app:showAsAction="never"/>
+
+</menu>

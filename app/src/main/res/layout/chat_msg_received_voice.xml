@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="chatMessage"
+            type="com.hyphenate.chat.EMMessage"
+            />
+
+        <variable
+            name="showTimeStamp"
+            type="boolean"
+            />
+
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.DateUtil"/>
+        <import type="com.hyphenate.chat.EMVoiceMessageBody"/>
+        <import type="com.hyphenate.chat.EMTextMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage.Status"/>
+        <import type="com.hyphenate.chat.EMMessageBody"/>
+        <import type="com.hyphenate.chat.EMMessage"/>
+        <import type="com.misterright.model.MisterData"/>
+        <import type="com.misterright.model.entity.GlobalInfo"/>
+        <import type="com.misterright.model.entity.UserInfo"/>
+        <import type="com.misterright.util.ConvertUtil"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!-- 时间-->
+        <include layout="@layout/view_chat_time"
+                 bind:time="@{DateUtil.toTimeStamp(chatMessage.getMsgTime())}"
+                 bind:show="@{showTimeStamp?View.VISIBLE:View.GONE}"
+            />
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chat_msg_head_size"
+            android:layout_marginTop="@dimen/chat_bubble_margin_v"
+            android:layout_marginBottom="@dimen/chat_bubble_margin_v"
+            android:paddingRight="@dimen/chat_bubble_margin_to_pair"
+            >
+
+            <!--头像-->
+            <com.misterright.ui.widget.ImgViewGlide
+                android:id="@+id/chat_user_head"
+                android:layout_width="@dimen/chat_msg_head_size"
+                android:layout_height="@dimen/chat_msg_head_size"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                app:is_circle="true"
+                app:is_square="true"
+                app:autoHead="@{false}"
+                />
+
+            <!--内容-->
+            <RelativeLayout
+                android:id="@+id/chat_bubble"
+                app:layout_widthPercent="@{ConvertUtil.voiceLength2Percent(((EMVoiceMessageBody)chatMessage.getBody()).getLength())}"
+                android:layout_height="@dimen/chat_msg_head_size"
+                android:layout_toRightOf="@id/chat_user_head"
+                android:gravity="center_vertical"
+                android:background="@drawable/chat_msg_received_bg"
+                >
+
+                <ImageView
+                    android:id="@+id/chat_voice_play_animate"
+                    android:layout_width="@dimen/chat_voice_anim_size"
+                    android:layout_height="@dimen/chat_voice_anim_size"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitEnd"
+                    android:background="@drawable/chat_voice_anim_playing_received"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_5_grey_4"
+                android:id="@+id/chat_voice_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/chat_bubble"
+                android:text="@{((EMVoiceMessageBody)chatMessage.getBody()).getLength()+` '`}"
+                />
+        </android.support.percent.PercentRelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="account"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/me_menu_item_height"
+            android:paddingLeft="@dimen/me_menu_item_left_right_padding"
+            android:paddingRight="@dimen/me_menu_item_left_right_padding"
+            android:background="@color/white">
+
+            <TextView
+                style="@style/text_2_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_black"
+                android:text="@string/account"/>
+
+            <TextView
+                style="@style/text_2_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_22"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/icon_account_circle"
+                android:text="@{`   `+account}"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.5"
+                android:layout_alignParentBottom="true"
+                android:background="@color/divider"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/me_account_change_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/me_menu_item_height"
+            android:paddingLeft="@dimen/me_menu_item_left_right_padding"
+            android:paddingRight="@dimen/me_menu_item_left_right_padding"
+            android:background="@color/white"
+            >
+
+            <TextView
+                style="@style/text_2_white"
+                android:textColor="@color/text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/reset_password"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/open_more_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_open_more"
+                />
+
+        </RelativeLayout>
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+
+        <TextView
+            android:id="@+id/me_account_logout"
+            style="@style/text_2_blue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/me_menu_item_height"
+            android:gravity="center"
+            android:text="@string/logout"
+            android:textColor="@color/text_red"
+            android:background="@color/white"
+            />
+
+    </LinearLayout>
+
+
+</layout>

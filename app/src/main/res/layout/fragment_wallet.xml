@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="coinCount"
+            type="int"/>
+        <import type="com.misterright.util.StringStyles.RichText"/>
+    </data>
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--大金币-->
+        <!--375/307=1.22-->
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/fragment_wallet_top_layout"
+            app:layout_widthPercent="100%"
+            app:layout_aspectRatio="122%"
+            android:layout_alignParentTop="true"
+            android:background="@color/white">
+
+            <!--124/375=0.33  40/307=0.13  25/307=0.081-->
+            <ImageView
+                android:id="@+id/fragment_wallet_coin_icon"
+                app:layout_widthPercent="33%"
+                app:layout_aspectRatio="100%"
+                app:layout_marginTopPercent="13%"
+                app:layout_marginBottomPercent="8.1%"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/gold_coin"/>
+
+            <TextView
+                style="@style/text_1_grey_5"
+                android:id="@+id/fragment_wallet_my_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/fragment_wallet_coin_icon"
+                android:text="@string/wallet_my_coin"/>
+
+            <!--14.5/307=0.047-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_marginTopPercent="4.7%"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/fragment_wallet_my_coin"
+                android:textColor="@color/text_black"
+                android:text="@{RichText.newRichText().append(String.valueOf(coinCount),47).append(`T`,30).build()}"
+                />
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <TextView
+            style="@style/text_4_grey_5"
+            android:id="@+id/fragment_wallet_service_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_8"
+            android:layout_below="@id/fragment_wallet_top_layout"
+            android:text="@string/find_faster_service"
+            />
+
+        <!--匹配两个-->
+        <RelativeLayout
+            android:id="@+id/fragment_wallet_match_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/wallet_item_height"
+            android:layout_below="@id/fragment_wallet_service_tip"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/fragment_wallet_match_two_icon"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/wallet_match_two"
+                />
+            <TextView
+                style="@style/text_2_white"
+                android:textColor="@color/text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/fragment_wallet_match_two_icon"
+                android:text="@string/wallet_match_two"/>
+            <include layout="@layout/view_open_more"/>
+        </RelativeLayout>
+
+    </android.support.percent.PercentRelativeLayout>
+
+</layout>

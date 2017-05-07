@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        >
+
+    <data>
+        <variable
+            name="selectIndex"
+            type="int"/>
+        <import type="com.misterright.ui.mine.WalletMatchTwoFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--189.5/375=0.505-->
+        <com.misterright.ui.widget.ImgViewGlide
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:height_from_width="0.505"
+            app:imageResId="@{WalletMatchTwoFragment.getHeadImg()}"
+            />
+        <TextView
+            style="@style/text_4_grey_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_8"
+            android:gravity="center_vertical"
+            android:text="@string/find_faster_service"/>
+
+        <!--选择类型-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_14"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:divider="@drawable/linearlayout_divider"
+            android:showDividers="middle">
+            <!--1个月-->
+            <include
+                android:id="@+id/fragment_wallet_match_two_one_month"
+                layout="@layout/view_item_buy_match_two"
+                bind:day="@{30}"
+                bind:selected="@{selectIndex==0}"/>
+            <!--3个月-->
+            <include
+                android:id="@+id/fragment_wallet_match_two_three_month"
+                layout="@layout/view_item_buy_match_two"
+                bind:day="@{90}"
+                bind:selected="@{selectIndex==1}"/>
+            <!--1天-->
+            <include
+                android:id="@+id/fragment_wallet_match_two_one_day"
+                layout="@layout/view_item_buy_match_two"
+                bind:day="@{1}"
+                bind:selected="@{selectIndex==2}"/>
+        </LinearLayout>
+
+        <!--确认购买-->
+        <Button
+            style="@style/text_1_white"
+            android:id="@+id/fragment_wallet_match_two_sure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/wallet_item_height"
+            android:layout_marginTop="@dimen/dp_28"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:background="@drawable/button_background"
+            android:text="@string/ensure_buy"/>
+
+    </LinearLayout>
+
+</layout>

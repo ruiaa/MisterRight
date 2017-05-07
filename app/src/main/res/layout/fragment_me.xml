@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="com.misterright.ui.mine.MeFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_12"/>
+
+        <include layout="@layout/view_divider_hor"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <!--通知-->
+                <include
+                    android:id="@+id/me_notice"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_NOTICE}"
+                    bind:key="@{@string/notice}"
+                    bind:showDivider="@{false}"
+                    />
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_11"
+                    />
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <!--账号-->
+                <include
+                    android:id="@+id/me_account"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_ACCOUNT}"
+                    bind:key="@{@string/account}"
+                    bind:showDivider="@{false}"
+                    />
+
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_11"
+                    />
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <!--钱包-->
+                <include
+                    android:id="@+id/me_wallet"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_WALLET}"
+                    bind:key="@{@string/wallet}"
+                    bind:showDivider="@{true}"
+                    />
+                <!--邀请好友-->
+                <include
+                    android:id="@+id/me_invite"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_INVITE}"
+                    bind:key="@{@string/invite_friend}"
+                    bind:showDivider="@{false}"
+                    />
+
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_11"
+                    />
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <!--清除本地缓存-->
+                <include
+                    android:id="@+id/me_clean_local_cache"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_CLEAN}"
+                    bind:key="@{@string/clean_local_cache}"
+                    bind:showDivider="@{true}"
+                    />
+                <!--意见反馈-->
+                <include
+                    android:id="@+id/me_feedback"
+                    layout="@layout/view_item_me"
+                    bind:img="@{MeFragment.ICON_FEEDBACK}"
+                    bind:key="@{@string/feedback}"
+                    bind:showDivider="@{false}"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <include layout="@layout/view_divider_hor"/>
+
+    </LinearLayout>
+
+</layout>

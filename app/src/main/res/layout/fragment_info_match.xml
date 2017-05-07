@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="time"
+            type="android.databinding.ObservableLong"
+            />
+        <variable
+            name="mapInfo"
+            type="com.misterright.model.entity.MapInfo"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--头像 倒计时 喜欢/不喜欢选择-->
+                <FrameLayout
+                    android:background="#111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--头像-->
+                    <com.misterright.ui.widget.ImgViewGlide
+                        android:id="@+id/info_detail_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:height_from_width="0.8"
+                        app:qiniu="@{mapInfo.headUrl}"/>
+                    <!--倒计时-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="82dp"/>
+                        <include
+                            layout="@layout/view_timer"
+                            bind:showHour="@{false}"
+                            bind:time="@{time.get()}"
+                            />
+                    </LinearLayout>
+                    <!--基本信息-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|left"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_marginBottom="@dimen/dp_12">
+
+                        <TextView
+                            style="@style/text_0_white"
+                            android:id="@+id/info_match_head_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@{mapInfo.baseInfo.getNicknameStr()+` `}"/>
+                        <TextView
+                            style="@style/text_3_white"
+                            android:id="@+id/info_match_head_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/info_match_head_name"
+                            android:layout_marginLeft="@dimen/dp_12"
+                            android:layout_alignBottom="@id/info_match_head_name"
+                            android:text="@{mapInfo.baseInfo.getAgeStr()+` | `+mapInfo.baseInfo.getOneHeightStr()}"/>
+                        <TextView
+                            style="@style/text_3_white"
+                            android:id="@+id/info_match_head_school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/info_match_head_name"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:text="@{mapInfo.baseInfo.getSchoolStr()+`  `+mapInfo.baseInfo.getGradeStr()}"/>
+
+
+                    </RelativeLayout>
+
+                    <!--选择-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginBottom="@dimen/dp_12"
+                        android:layout_marginRight="@dimen/dp_12">
+
+                        <ImageButton
+                            android:id="@+id/info_match_like"
+                            android:layout_width="@dimen/meet_match_like_button_size"
+                            android:layout_height="@dimen/meet_match_like_button_size"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:padding="@dimen/meet_match_button_padding"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/icon_chat"
+                            android:background="@drawable/border_circle"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/info_match_dislike"
+                            android:layout_width="@dimen/meet_match_like_button_size"
+                            android:layout_height="@dimen/meet_match_like_button_size"
+                            android:layout_marginRight="@dimen/meet_match_like_info_between"
+                            android:layout_toLeftOf="@id/info_match_like"
+                            android:layout_alignParentBottom="true"
+                            android:padding="@dimen/meet_match_button_padding"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/meet_icon_close"
+                            android:background="@drawable/border_circle"
+                            />
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_14"
+                    android:background="@color/divider"
+                    android:visibility="@{mapInfo.getAlbumSize()==0 ? View.GONE:View.VISIBLE}"
+                    />
+
+                <!-- 8 图-->
+                <com.misterright.ui.widget.NineImg
+                    android:id="@+id/info_detail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nineimg_max_count="8"
+                    app:nineImgPaths="@{mapInfo.getCompleteAlbum()}"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_14"
+                    android:background="@color/divider"
+                    android:visibility="@{mapInfo.getAlbumSize()==0 ? View.GONE:View.VISIBLE}"
+                    />
+
+                <!--详细-->
+                <include
+                    layout="@layout/view_info_detail"
+                    android:id="@+id/view_info_detail"
+                    bind:editable="@{false}"
+                    bind:mapInfo="@{mapInfo}"
+                    bind:editing="@{false}"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include layout="@layout/view_toolbar"/>
+
+    </RelativeLayout>
+
+<!--    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    &lt;!&ndash;头像 倒计时 喜欢/不喜欢选择&ndash;&gt;
+                    <FrameLayout
+                        android:background="#111"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        &lt;!&ndash;头像&ndash;&gt;
+                        <com.misterright.ui.widget.ImgViewGlide
+                            android:id="@+id/info_detail_head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:height_from_width="0.8"
+                            app:qiniu="@{mapInfo.headUrl}"/>
+                        &lt;!&ndash;倒计时&ndash;&gt;
+                        <include
+                            layout="@layout/view_timer"
+                            bind:showHour="@{false}"
+                            bind:time="@{time.get()}"
+                            />
+                        &lt;!&ndash;基本信息&ndash;&gt;
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|left"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                style="@style/text_3_white"
+                                android:id="@+id/info_match_head_school"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginTop="12dp"
+                                android:text="@{mapInfo.baseInfo.getSchoolStr()+mapInfo.baseInfo.getGradeStr()}"/>
+                            <TextView
+                                style="@style/text_0_white"
+                                android:id="@+id/info_match_head_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/info_match_head_school"
+                                android:layout_alignParentLeft="true"
+                                android:text="@{mapInfo.baseInfo.getNicknameStr()}"/>
+                            <TextView
+                                style="@style/text_3_white"
+                                android:id="@+id/info_match_head_age"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/info_match_head_school"
+                                android:layout_toRightOf="@id/info_match_head_name"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{mapInfo.baseInfo.getAgeStr()+` | `+mapInfo.baseInfo.getOneHeightStr()}"/>
+
+                        </RelativeLayout>
+
+                        &lt;!&ndash;选择&ndash;&gt;
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginRight="12dp">
+
+                            <ImageButton
+                                android:id="@+id/info_match_like"
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:padding="12dp"
+                                android:scaleType="fitCenter"
+                                android:src="@mipmap/icon_chat"
+                                android:background="@drawable/border_circle"
+                                />
+
+                            <ImageButton
+                                android:id="@+id/info_match_dislike"
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_toLeftOf="@id/info_match_like"
+                                android:layout_alignParentBottom="true"
+                                android:padding="12dp"
+                                android:scaleType="fitCenter"
+                                android:src="@mipmap/meet_icon_close"
+                                android:background="@drawable/border_circle"
+                                />
+
+                        </RelativeLayout>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="14dp"
+                        android:background="@color/divider"
+                        />
+
+                    <com.misterright.ui.widget.NineImg
+                        android:id="@+id/info_detail_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:nineimg_max_count="8"
+                        app:nineImgPaths="@{mapInfo.getCompleteAlbum()}"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="14dp"
+                        android:background="@color/divider"
+                        />
+
+                    <include
+                        layout="@layout/view_info_detail"
+                        android:id="@+id/view_info_detail"
+                        bind:editable="@{false}"
+                        bind:mapInfo="@{mapInfo}"
+                        bind:editing="@{false}"
+                        />
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <include layout="@layout/view_toolbar"/>
+
+        </RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/info_match_fab"
+            android:layout_width="134dp"
+            android:layout_height="58dp"
+            app:layout_anchorGravity="bottom|right|end"/>
+    </android.support.design.widget.CoordinatorLayout>-->
+
+</layout>

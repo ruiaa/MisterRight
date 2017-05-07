@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="hintTextSize" format="dimension"/>
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="vertical_spacing" format="dimension" />
+        <attr name="line_count" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="LabelLayout">
+        <attr name="child_layout" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="ImgViewGlide">
+        <attr name="is_circle" format="boolean"/>
+        <attr name="is_square" format="boolean"/>
+        <attr name="height_from_width" format="float"/>
+        <attr name="blur_degree" format="integer"/>
+        <attr name="auto_blur" format="boolean"/>
+        <attr name="corner" format="dimension"/>
+        <attr name="corner_type" format="integer"/>
+        <attr name="img_res_id" format="reference|integer"/>
+        <attr name="img_url" format="string"/>
+        <attr name="img_path" format="string"/>
+        <attr name="auto_open_big" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="NineImg">
+        <attr name="nineimg_h_spacing" format="dimension" />
+        <attr name="nineimg_w_spacing" format="dimension" />
+        <attr name="nineimg_max_count" format="integer"/>
+        <attr name="nineimg_with_selector" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="InviteFriendCircleView">
+        <attr name="invite_radius" format="dimension"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="show"
+            type="int"/>
+        <variable
+            name="rightMargin"
+            type="int"/>
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.ConvertUtil"/>
+    </data>
+
+    <ImageView
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginRight="@{ConvertUtil.dp2px(rightMargin==0 ? 20:rightMargin)}"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical|right|end"
+        android:src="@mipmap/icon_open_more"
+        android:visibility="@{show}"/>
+</layout>

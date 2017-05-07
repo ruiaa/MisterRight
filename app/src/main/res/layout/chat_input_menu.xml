@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_menu_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_input_bottom_menu_height"
+    android:minHeight="@dimen/chat_input_bottom_menu_height"
+    android:paddingLeft="@dimen/dp_2"
+    android:paddingRight="@dimen/dp_2"
+    android:layout_marginBottom="@dimen/dp_2"
+    android:background="@color/white"
+    >
+
+    <!--最左边 录音切换-->
+    <ImageButton
+        android:id="@+id/chat_edit_or_voice"
+        android:layout_width="@dimen/chat_input_bottom_menu_height"
+        android:layout_height="@dimen/chat_input_bottom_menu_height"
+        android:padding="@dimen/dp_8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_inputmenu_switch_voicle"
+        android:background="@color/white"
+        />
+
+    <!--最右边 图片/发送-->
+    <FrameLayout
+        android:id="@+id/chat_input_layout_right"
+        android:layout_width="@dimen/chat_input_bottom_menu_height"
+        android:layout_height="@dimen/chat_input_bottom_menu_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        >
+        <ImageButton
+            android:id="@+id/chat_more"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_8"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chat_inputmenu_more"
+            android:background="@color/white"
+            />
+
+        <TextView
+            style="@style/text_3_white"
+            android:id="@+id/chat_send_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:background="@drawable/bg_rect_green"
+            android:gravity="center"
+            android:text="@string/send"
+            android:visibility="invisible"
+            />
+    </FrameLayout>
+
+    <!--表情-->
+    <ImageButton
+        android:id="@+id/chat_input_emoji"
+        android:layout_width="@dimen/chat_input_bottom_menu_height"
+        android:layout_height="@dimen/chat_input_bottom_menu_height"
+        android:padding="@dimen/dp_8"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/chat_input_layout_right"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_inputmenu_switch_emotion"
+        android:background="@color/white"
+        />
+
+    <!--中间 录音/输入-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/chat_input_bottom_menu_height"
+        android:minHeight="@dimen/chat_input_bottom_menu_height"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/chat_input_emoji"
+        android:layout_toRightOf="@id/chat_edit_or_voice"
+        >
+
+        <TextView
+            style="@style/text_4_grey_5"
+            android:id="@+id/chat_voice_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/sp_6"
+            android:gravity="center"
+            android:text="@string/chat_down_voice"
+            android:visibility="invisible"
+            android:background="@drawable/bg_rect_white_grey_border"
+            android:clickable="true"
+            />
+
+        <io.github.rockerhieu.emojicon.EmojiconEditText
+            android:id="@+id/chat_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxHeight="@dimen/chat_input_bottom_menu_height_max"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:background="@null"
+            android:drawablePadding="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:drawableBottom="@drawable/line_h_green"
+            />
+
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,186 @@
+apply plugin: 'com.android.application'
+//lambda
+apply plugin: 'me.tatarka.retrolambda'
+//butter
+apply plugin: 'android-apt'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.ruiaa.toolpck"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "boolean", "LOG_OPEN", "false"
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            buildConfigField "boolean", "LOG_OPEN", "true"
+        }
+    }
+    /* productFlavors{
+
+        standard{
+            manifestPlaceholders =[appName:"MisterRight"]
+            applicationId "com.misterright"
+        }
+*//*
+        small1{
+            manifestPlaceholders =[appName:"small1"]
+            applicationId "com.misterright.small1"
+        }
+
+        small2{
+            manifestPlaceholders =[appName:"small2"]
+            applicationId "com.misterright.small2"
+        }
+
+        small3{
+            manifestPlaceholders =[appName:"small3"]
+            applicationId "com.misterright.small3"
+        }
+
+        small4{
+            manifestPlaceholders =[appName:"small4"]
+            applicationId "com.misterright.small4"
+        }
+
+        small5{
+            manifestPlaceholders =[appName:"small5"]
+            applicationId "com.misterright.small5"
+        }
+        small6{
+            manifestPlaceholders =[appName:"small6"]
+            applicationId "com.misterright.small6"
+        }
+        small7{
+            manifestPlaceholders =[appName:"small7"]
+            applicationId "com.misterright.small7"
+        }
+        small8{
+            manifestPlaceholders =[appName:"small8"]
+            applicationId "com.misterright.small8"
+        }
+        small9{
+            manifestPlaceholders =[appName:"small9"]
+            applicationId "com.misterright.small9"
+        }
+        small10{
+            manifestPlaceholders =[appName:"small10"]
+            applicationId "com.misterright.small10"
+        }*//*
+
+    }*/
+
+    //data binding
+    dataBinding {
+        enabled = true
+    }
+
+    //使用 java8 lambda
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //so
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    /*
+     *
+     *  UI
+     *
+     */
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:percent:24.0.0'
+    //底部选择栏
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
+    //表情
+    compile 'io.github.rockerhieu:emojicon:1.4.2'
+    compile 'io.github.rockerhieu:emojiconize:1.0.0'
+    //对话框
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+    //轮式选择器
+    compile 'cn.qqtheme.framework:WheelPicker:1.2.4'
+    //滑动轮播多页面
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'cn.bingoogolapple:bga-banner:2.1.0'
+    //view注解
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //keyboard
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.0.0'
+    /*
+     *
+     *  RxJava
+     *
+     */
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    /*
+     *
+     * net
+     *
+     */
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    /*
+     *
+     *  图片
+     *
+     */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+        exclude group: 'glide-parent'
+    }
+    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    compile 'com.github.chrisbanes:PhotoView:1.3.0'
+    //七牛
+    compile 'com.qiniu:qiniu-android-sdk:7.2.+'
+    /*
+     *
+     *  数据
+     *
+     */
+    compile 'com.orhanobut:hawk:2.0.1'
+    /*
+     *
+     *  环信
+     *
+     */
+    compile files('libs/hyphenatechat_3.2.0.jar')
+}

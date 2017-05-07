@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="note"
+            type="com.misterright.model.entity.MisterNote"
+            />
+        <import type="com.misterright.util.DateUtil"/>
+        <import type="com.misterright.model.MisterData"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <!-- android:background="@mipmap/bg_card"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:elevation="@dimen/elevation_card_bottom">
+
+        <!--时间 头像-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_8">
+
+            <com.misterright.ui.widget.ImgViewGlide
+                android:id="@+id/item_note_head"
+                android:layout_width="@dimen/dp_42"
+                android:layout_height="@dimen/dp_42"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                app:is_circle="true"
+                app:is_square="true"
+                app:autoHead="@{note.sendUid==MisterData.getInstance().globalInfo.userInfo.uid}"
+                />
+
+            <TextView
+                style="@style/text_3_grey_4"
+                android:id="@+id/item_note_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@{DateUtil.toNoteTime(note.time)}"
+                />
+
+        </LinearLayout>
+
+        <!--文字-->
+        <TextView
+            style="@style/text_1_grey_5"
+            android:id="@+id/item_note_content_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15"
+            android:text="@{note.content}"
+            android:visibility="@{(note.content==null||note.content.isEmpty()) ? View.GONE:View.VISIBLE}"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_12"/>
+
+        <!--图片-->
+        <com.misterright.ui.widget.NineImg
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15"
+            app:nineimg_max_count="9"
+            app:nineimg_w_spacing="@dimen/sp_6"
+            app:nineimg_h_spacing="@dimen/sp_6"
+            app:nineImgPaths="@{note.getCompletePictUrl()}"
+            app:autoOpenSave="@{true}"
+            />
+
+
+
+        <include layout="@layout/view_divider_hor"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/globalBackgroundColor"
+            />
+        <include layout="@layout/view_divider_hor"/>
+
+    </LinearLayout>
+
+
+
+</layout>

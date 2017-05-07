@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="mapInfo"
+            type="com.misterright.model.entity.MapInfo"/>
+
+        <variable
+            name="editable"
+            type="boolean"/>
+
+        <variable
+            name="editing"
+            type="boolean"/>
+
+        <import type="android.view.View"/>
+        <import type="java.util.List"/>
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/view_info_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8">
+
+        <!--自我介绍-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/info_detail_item_title_height"
+            android:paddingTop="@dimen/dp_4"
+            android:visibility="@{editing?View.GONE:View.VISIBLE}"
+            >
+
+            <TextView
+                style="@style/text_label_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/icon_introduce_oneself"
+                android:text="@{`  ` + @string/introduction}"/>
+
+            <TextView
+                style="@style/text_6_blue"
+                android:id="@+id/info_detail_intro_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_rect_blue"
+                android:drawableLeft="@mipmap/icon_plus"
+                android:drawablePadding="@dimen/dp_4"
+                android:padding="@dimen/dp_4"
+                android:text="@string/edit"
+                android:visibility="@{editable ? View.VISIBLE : View.GONE}"/>
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            style="@style/text_3_grey_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/info_detail_left_padding"
+            android:visibility="@{editing?View.GONE:View.VISIBLE}"
+            android:text="@{mapInfo.getIntroduction()}"/>
+
+        <!--交友标准-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/info_detail_item_title_height"
+            android:paddingTop="@dimen/dp_4"
+            >
+
+            <TextView
+                style="@style/text_label_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/icon_friend_standard"
+                android:text="@{`  ` + @string/friend_standard}"/>
+
+            <TextView
+                style="@style/text_6_blue"
+                android:id="@+id/info_detail_fs_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_rect_blue"
+                android:drawableLeft="@mipmap/icon_plus"
+                android:drawablePadding="@dimen/dp_4"
+                android:padding="@dimen/dp_4"
+                android:text="@string/edit"
+                android:visibility="@{editable ? View.VISIBLE : View.GONE}"/>
+
+        </RelativeLayout>
+
+        <!--            年龄-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_fs_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/age"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.friendStandard.getAgeStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_fs_age"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/age}"
+            bind:value="@{mapInfo.friendStandard.getAgeStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            年级-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_fs_gradle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/grade"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.friendStandard.getGradeStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_fs_gradle"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/grade}"
+            bind:value="@{mapInfo.friendStandard.getGradeStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            身高-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_fs_body_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/body_height"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.friendStandard.getHeightStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_fs_body_height"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/body_height}"
+            bind:value="@{mapInfo.friendStandard.getHeightStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--基本资料-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/info_detail_item_title_height"
+            android:paddingTop="@dimen/dp_4"
+            >
+
+            <TextView
+                style="@style/text_label_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/icon_info_base"
+                android:text="@{`  ` + @string/base_info}"/>
+
+            <TextView
+                style="@style/text_6_blue"
+                android:id="@+id/info_detail_base_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_rect_blue"
+                android:drawableLeft="@mipmap/icon_plus"
+                android:drawablePadding="@dimen/dp_4"
+                android:padding="@dimen/dp_4"
+                android:text="@string/edit"
+                android:visibility="@{editable ? View.VISIBLE : View.GONE}"/>
+
+        </RelativeLayout>
+
+        <!--            昵称-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/nickname"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getNicknameStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_nickname"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/nickname}"
+            bind:value="@{mapInfo.baseInfo.getNicknameStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            居住地-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_live_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/live_area"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getLocationStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_live_area"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/live_area}"
+            bind:value="@{mapInfo.baseInfo.getLocationStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            年龄-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/age"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getAgeStr()}"/>
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_age"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/age}"
+            bind:value="@{mapInfo.baseInfo.getAgeStr()}"
+            bind:openMore="@{false}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            身高-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_body_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/body_height"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getHeightStr()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_open_more"
+                android:visibility="@{editing ? View.VISIBLE:View.GONE}"
+                />
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_body_height"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/body_height}"
+            bind:value="@{mapInfo.baseInfo.getHeightStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            学校-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/school"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getSchoolStr()}"/>
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_school"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/school}"
+            bind:value="@{mapInfo.baseInfo.getSchoolStr()}"
+            bind:openMore="@{false}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            学院-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_college"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/college"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getCollegeStr()}"/>
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_college"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/college}"
+            bind:value="@{mapInfo.baseInfo.getCollegeStr()}"
+            bind:openMore="@{false}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            年级-->
+        <!--<LinearLayout
+            android:id="@+id/info_detail_base_gradle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/info_detail_left_padding">
+
+            <TextView
+                style="@style/text_4_grey_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:text="@string/grade"
+                />
+
+            <TextView
+                style="@style/text_4_grey_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{mapInfo.baseInfo.getGradeStr()}"/>
+
+        </LinearLayout>-->
+        <include
+            android:id="@+id/info_detail_base_gradle"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/grade}"
+            bind:value="@{mapInfo.baseInfo.getGradeStr()}"
+            bind:openMore="@{false}"
+            bind:editing="@{editing}"
+            />
+
+        <!--            家乡-->
+        <include
+            android:id="@+id/info_detail_base_hometown"
+            layout="@layout/view_item_info_label"
+            bind:key="@{@string/hometown}"
+            bind:value="@{mapInfo.baseInfo.getHometownStr()}"
+            bind:openMore="@{editing}"
+            bind:editing="@{editing}"
+            />
+
+        <!--兴趣爱好-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/info_detail_item_title_height"
+            android:paddingTop="@dimen/dp_4"
+            >
+
+            <TextView
+                style="@style/text_label_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/icon_hobby"
+                android:text="@{`  ` + @string/hobby}"/>
+
+            <TextView
+                style="@style/text_6_blue"
+                android:id="@+id/info_detail_hobby_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_rect_blue"
+                android:drawableLeft="@mipmap/icon_plus"
+                android:drawablePadding="@dimen/dp_4"
+                android:padding="@dimen/dp_4"
+                android:text="@string/edit"
+                android:visibility="@{editable ? View.VISIBLE : View.GONE}"/>
+
+        </RelativeLayout>
+
+        <!--                体育-->
+        <include
+            android:id="@+id/info_detail_sport"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{1}"
+            />
+
+        <!--                 食-->
+        <include
+            android:id="@+id/info_detail_diet"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{2}"
+            />
+
+        <!--                饮-->
+        <include
+            android:id="@+id/info_detail_drink"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{3}"
+            />
+
+        <!--                书-->
+        <include
+            android:id="@+id/info_detail_book"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{4}"
+            />
+
+        <!--                视频-->
+        <include
+            android:id="@+id/info_detail_video"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{5}"
+            />
+
+        <!--                休闲-->
+        <include
+            android:id="@+id/info_detail_leisure"
+            layout="@layout/view_item_info_hobby_label"
+            bind:hobby="@{mapInfo.hobby ?? mapInfo.newHobby()}"
+            bind:editing="@{editing}"
+            bind:type="@{6}"
+            />
+        
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_24"/>
+
+    </LinearLayout>
+
+</layout>

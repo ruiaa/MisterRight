@@ -1,0 +1,238 @@
+删掉1.5和4.3，增加4.3.1、4.3.2、4.3.3、4.3.4、4.3.5
+
+3．	更改密码接口
+
+    
+====================================================================================================    
+3.3	更改密码：(ok)
+    原接口:POST /user/alter/pwd
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=modifyUserPwd
+client->server:
+    {
+        "phone_num":"13023282871",
+        "pwd":"md5",
+        "new_pwd": "new_md5",
+        "token":"XXXXX"
+    }
+server->client:
+    {
+        "code": 200,
+        "data": {
+            "hx_user": "13413023282871"   // 环信帐号
+            "hx_pwd": "134130232822323871"   // 环信密码
+        }        
+    }
+
+====================================================================================================
+
+1.5	发送用户验证信息给服务器(ok)：
+    原接口:POST /verify/base_info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserInfo
+    client->server:
+    {
+        "phone_num":"13023282871",
+        "token": "xasfda",
+        "id_card_url":"七年key",
+        "birtyday":"1991-02-02",
+        "sex": true, // 男true, 女 false
+        "name": "test",
+        "job": "student",
+        "map_info": { // Json 再 Base64
+            "base_info": {
+                "school": "中山大学",
+                "grade":2014
+            }
+        }
+    }
+   server->client:
+    {
+        "code": 200,
+        "data": {}        
+    }
+====================================================================================================   
+ 
+ 2.3	登出：(ok)
+原接口:POST /user/logout
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=logout
+    client->server:
+    {
+        "phone_num": "13023282871",
+         "token": "xasfda",
+    }
+    server->client:
+    {
+        "code": 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.2	获取用户信息(ok)：
+     原接口:GET /user/info
+     现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=getUserInfo
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232131"
+        "target_uid": 10002
+    }
+server->client:
+    {
+        "code": 200,
+	data:{
+        	birthday = "";
+    		"card_image" = "";
+    		"card_type" = 1;
+    		city = "";
+    		"head_image" = "100003_1482129091_0";
+    		"invitation_code" = 889931;
+    		"invitation_count" = 0;
+    		job = "";
+    		"info" = "";
+    		nickname = "";
+		signature = “”;
+		album = “”;
+    		province = "";
+    		sex = 0;
+    		"t_currency" = "";
+    		uid = 100003;
+    		"user_name" = 13430208600;
+	}
+    }
+====================================================================================================
+4.3	修改用户信息(ok)：
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserInfo
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "update_info": "字符串"// json marshal 字符串后 再BASE64，可单独更新某一个 
+        /*         
+        { 
+            "head_url": "头像地址"
+            "album": [],
+            "introduction": "test_introduction",
+            "friend_standard": {},
+            "base_info": {
+                "school": "中山大学",
+                "grade":2014
+            },
+            "hobby": {}
+            "name":"" // 更新昵称
+        }
+        */
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.3.1	修改用户信息(ok)： 更新头像
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserHead
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "head_key”: "头像七牛key”   // 对应数据库app_user_info表的head_image字段
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.3.2	修改用户信息(ok)： 注册时更新的数据
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserRegisterInfo
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "card_key”:”七年key",
+	“card_type”:1
+        "birthday":"1991-02-02",
+        "sex": true, // 男true, 女 false
+        "name": "test",
+        "job": "student",
+        "info": { // Json 再 Base64
+            "base_info": {
+                "school": "中山大学",
+                "grade":2014
+            }
+        }
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.3.3	修改用户信息(ok)： 更新个人签名
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserIntroduction
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "introduction”:”introduction", // 对应数据库app_user_info表的signature字段
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.3.4	修改用户信息(ok)： 更新个人信息
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "province”:“广东省”, 
+  	"city”：”广州市“,
+	“name”:”昵称”, // 对应数据库app_user_info表的nickname字段
+	“job”:”程序员”,
+	“info”:”abcddddd” // json + base64
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================
+4.3.5	修改用户信息(ok)：  更新相册，考虑在app_user_info增加相册字段，字段名为album， getUserInfo也要返回相册
+    原接口:POST /user/info
+    现接口:POST http://119.29.229.131:8090/misterright/app/appUsersAction?handler=updateUserAlbum
+    
+    client->server:
+    {
+        "phone_num": "13023282871"
+        "token": "1232123",
+        "album”:[“七牛key1”, “七牛key2”] // 对应数据库app_user_info表的signature字段
+    }
+    
+server->client: 
+    {
+        “code”: 200,
+        "data": {}
+    }
+    
+====================================================================================================

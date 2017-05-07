@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/take_note_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_240"
+                    android:layout_margin="@dimen/dp_12"
+                    android:gravity="top|left|start"
+                    android:background="@null"
+                    android:hint="@string/note_tip_hint"
+                    />
+
+                <!--<com.misterright.ui.widget.ImageFlowLayout
+                    android:id="@+id/take_note_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />-->
+
+                <com.misterright.ui.widget.NineImg
+                    android:id="@+id/take_note_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_8"
+                    app:nineimg_w_spacing="@dimen/dp_8"
+                    app:nineimg_h_spacing="@dimen/dp_8"
+                    app:nineimg_max_count="9"
+                    app:nineimg_with_selector="true"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

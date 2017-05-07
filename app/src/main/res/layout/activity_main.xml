@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="select"
+            type="int"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+                android:id="@+id/main_nav_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:elevation="@dimen/elevation_toolbar"
+                app:bnbElevation="@dimen/elevation_toolbar"
+                />-->
+
+        <LinearLayout
+            android:id="@+id/main_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+
+            <RelativeLayout
+                android:id="@+id/main_tab_meet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+
+                <TextView
+                    android:id="@+id/main_tab_meet_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:textColor="@{select==0 ? @color/text_blue:@color/text_grey_5}"
+                    android:textSize="@dimen/sp_10"
+                    android:text="@string/meet"
+                    />
+
+                <ImageView
+                    android:id="@+id/main_tab_meet_img"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_above="@id/main_tab_meet_text"
+                    android:layout_alignLeft="@id/main_tab_meet_text"
+                    android:src="@drawable/tab_meet"
+                    app:selected="@{select==0}"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/main_tab_community"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+
+                <TextView
+                    android:id="@+id/main_tab_community_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:textColor="@{select==1 ? @color/text_blue:@color/text_grey_5}"
+                    android:textSize="@dimen/sp_10"
+                    android:text="@string/community"
+                    />
+
+                <ImageView
+                    android:id="@+id/main_tab_community_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_above="@id/main_tab_community_text"
+                    android:src="@drawable/tab_community"
+                    app:selected="@{select==1}"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/main_tab_mine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+
+                <TextView
+                    android:id="@+id/main_tab_mine_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:textColor="@{select==2? @color/text_blue:@color/text_grey_5}"
+                    android:textSize="@dimen/sp_10"
+                    android:text="@string/me"
+                    />
+
+                <ImageView
+                    android:id="@+id/main_tab_mine_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_above="@id/main_tab_mine_text"
+                    android:src="@drawable/tab_mine"
+                    app:selected="@{select==2}"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/main_nav_bar_top_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0.5"
+            android:layout_above="@id/main_nav_bar"
+            android:background="@color/divider"
+            />
+
+        <FrameLayout
+            android:id="@+id/main_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/main_nav_bar_top_line"
+            />
+
+    </RelativeLayout>
+
+</layout>

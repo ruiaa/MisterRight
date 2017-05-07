@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.misterright.MisterConfig"/>
+    </data>
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/register_login_top_layout"
+            android:layout_width="match_parent"
+            app:layout_heightPercent="40%"
+            android:layout_alignParentTop="true">
+
+            <include layout="@layout/view_toolbar"/>
+
+            <!--遇见你 爱上你-->
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:background="#d2739fda">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:src="@mipmap/login_ta_bg"/>
+
+                <TextView
+                    style="@style/text_3_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:text="@string/meet_you_and_love"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/register_login_top_layout"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="110"/>
+
+            <!--登录-->
+            <!--<RelativeLayout
+                android:id="@+id/activity_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_gravity="bottom"
+                >
+
+                &lt;!&ndash;忘记密码&ndash;&gt;
+                <TextView
+                    android:id="@+id/login_forget_pwd"
+                    style="@style/text_5_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/forget_password"/>
+
+                &lt;!&ndash;登录&ndash;&gt;
+                <Button
+                    android:id="@+id/login_login"
+                    style="@style/text_1_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:layout_above="@id/login_forget_pwd"
+                    android:background="@drawable/bg_button_login"
+                    android:text="@string/loginUsePwd"/>
+
+                &lt;!&ndash;密码&ndash;&gt;
+                <EditText
+                    android:id="@+id/login_input_pwd"
+                    style="@style/text_0_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:layout_above="@id/login_login"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_button_login_input"
+                    android:text="123456"/>
+
+                &lt;!&ndash;账号&ndash;&gt;
+                <EditText
+                    android:id="@+id/login_input_name"
+                    style="@style/text_0_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:layout_above="@id/login_input_pwd"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_button_login_input"
+                    android:text="15202019649"/>
+
+            </RelativeLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:orientation="vertical">
+
+                <!--账号-->
+                <EditText
+                    style="@style/register_input_text_content"
+                    android:id="@+id/login_input_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_button_login_input"
+                    android:drawableLeft="@mipmap/login_phone"
+                    android:drawablePadding="@dimen/dp_14"
+                    android:paddingLeft="@dimen/dp_24"
+                    android:inputType="phone"
+                    android:maxLength="@{MisterConfig.PHONE_NUM}"
+                    android:maxLines="1"
+                    android:hint="@string/hint_input_phone_number"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"
+                    />
+
+                <!--密码-->
+                <EditText
+                    style="@style/register_input_text_content"
+                    android:id="@+id/login_input_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_button_login_input"
+                    android:drawableLeft="@mipmap/login_pwd"
+                    android:drawablePadding="@dimen/dp_14"
+                    android:paddingLeft="@dimen/dp_24"
+                    android:inputType="textPassword"
+                    android:maxLength="@{MisterConfig.PWD_COUNT_MAX}"
+                    android:maxLines="1"
+                    android:hint="@string/hint_input_password"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"
+                    android:text="123456"/>
+
+                <!--登录-->
+                <Button
+                    android:id="@+id/login_login"
+                    style="@style/text_1_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_input_height"
+                    android:background="@drawable/bg_button_login"
+                    android:text="@string/login"/>
+
+                <!--忘记密码-->
+                <TextView
+                    android:id="@+id/login_forget_pwd"
+                    style="@style/text_5_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_gravity="right|end"
+                    android:text="@string/forget_password"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"/>
+
+        </LinearLayout>
+
+    </android.support.percent.PercentRelativeLayout>
+
+
+</layout>

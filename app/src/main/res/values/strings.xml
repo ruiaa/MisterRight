@@ -1,0 +1,200 @@
+<resources>
+    <string name="app_name">MisterRight</string>
+
+    <string name="time">时间</string>
+    <string name="time_before_second">秒前</string>
+    <string name="time_before_minute">分钟前</string>
+    <string name="time_before_hour">小时前</string>
+    <string name="time_before_day">天前</string>
+
+    <string name="have_copy_to_clipboard">已复制至粘贴板</string>
+    <string name="copy_to_clipboard">复制至粘贴板</string>
+
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    
+
+    <string name="share">分享</string>
+    <string name="collect">收藏</string>
+    <string name="release">发布</string>
+    <string name="commit">提交</string>
+    <string name="reply">回复</string>
+    <string name="comment">评论</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="finish">完成</string>
+
+    <string name="setting">设置</string>
+    <string name="notice">通知</string>
+
+    <string name="edit">编辑</string>
+
+    <string name="open_raw_img">查看原图</string>
+
+    <string name="meet">相遇</string>
+    <string name="know">相识</string>
+    <string name="like">相恋</string>
+    <string name="next_map_time_left">距离下次大匹配时间</string>
+    <string name="community">社区</string>
+    <string name="me">我</string>
+    <string name="send">发送</string>
+    <string name="chat">聊天</string>
+    <string name="take_notes">记笔记</string>
+    <string name="note_tip_hint">很多记忆，值得日后慢慢回忆......</string>
+    <string name="day_count_had_know">我们已经相识%s天了</string>
+    <string name="release_post">发帖子</string>
+
+    <string name="donot_write_content">你还没有写</string>
+    <string name="no_more">没有了</string>
+
+
+    <string name="community_hot_post">热门</string>
+    <string name="community_new_post">新帖</string>
+    <string name="community_article_input_title_hint">请输入标题（2-30）个字</string>
+    <string name="community_article_input_content_hint">输入你想说的</string>
+    <string name="community_article_title_too_short">帖子标题不要太少字</string>
+    <string name="community_click_to_open_more_reply">点击查看剩余%s条</string>
+
+    <string name="password">密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="old_password_input_hint">请输入旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="new_password_input_hint">请输入%s位以上的新密码</string>
+    <string name="repeat_password">重复密码</string>
+    <string name="repeat_password_input_hint">请重复输入一次新密码</string>
+    <string name="reset_password">重置密码</string>
+    <string name="reseting_password">正在重置密码</string>
+    <string name="reset_password_success">重置成功</string>
+    <string name="reset_password_no_effect">重置密码无效，请到"找回密码"</string>
+    <string name="worry_password">密码错误</string>
+    <string name="worry_old_password">旧密码错误</string>
+    <string name="worry_old_password_count">错误次数%d</string>
+    <string name="worry_new_password_less">请输入%s位以上的新密码</string>
+    <string name="worry_reset_password_difference">两次密码输入不一致</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="find_password">找回密码</string>
+    <string name="account">账号</string>
+    <string name="register">注册</string>
+    <string name="register_user">注册用户</string>
+    <string name="login">登录</string>
+    <string name="logout">退出登录</string>
+
+    <string name="tip_invite_code_count_worry">邀请码为6位，请重新输入</string>
+    <string name="tip_invite_code_worry">邀请码无效，请重新输入</string>
+    <string name="tip_invite_code_checking">正在验证邀请码</string>
+    <string name="tip_phone_checking">正在验证手机号</string>
+    <string name="tip_registering">正在注册</string>
+    <string name="tip_logining">正在登陆</string>
+    <string name="tip_pwd_two_difference">两次密码输入不一致</string>
+    <string name="tip_pho_worry_no_effect">手机号无效</string>
+    <string name="tip_pho_valid_worry_no_effect">手机号无效或验证码错误</string>
+    <string name="tip_nickname_too_short">昵称不要短于%s个字符</string>
+    <string name="tip_choose_sex">请选择你的性别</string>
+    <string name="tip_choose_birthday">请选择你的生日</string>
+    <string name="tip_choose_school">请选择你的学校</string>
+    <string name="tip_choose_gradle">请选择你的年级</string>
+    <string name="tip_choose_idcard">请上传你的学生证</string>
+    <string name="tip_register_fail">注册失败</string>
+
+    <string name="hint_get_invite_code_from_friend">赶紧找朋友要邀请码</string>
+    <string name="hint_input_phone_number">请输入11位手机号码</string>
+    <string name="hint_input_valid_code">请输入6位验证码</string>
+    <string name="hint_input_password">请输入6-16位密码</string>
+    <string name="hint_input_password_repeat">请输入6-16位密码</string>
+    <string name="hint_input_nickname">起个逗比的名字</string>
+    <string name="hint_input_sex">注册后不能修改</string>
+    <string name="hint_input_birthday">注册后不能修改</string>
+    <string name="hint_input_school">只有这些学校才能注册啊</string>
+    <string name="hint_input_gradle">系统每年自动加一级</string>
+
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="meet_you_and_love">遇见你   爱上你</string>
+    <string name="how_to_let_one_remember_you">你知道怎样才能使一个人记住你吗？
+    \n也许只需要你每天跟Ta讲几句话
+    \n每天每天。</string>
+    <string name="phone_number">手机号</string>
+    <string name="valid_code">验证码</string>
+    <string name="get_valid_code">获取验证码</string>
+    <string name="get_valid_code_wait">还剩%s秒</string>
+    <string name="next_step">下一步</string>
+    <string name="upload_student_card">请上传学生证</string>
+    <string name="only_for_check">（仅供后台审核用，隐私绝对安全）</string>
+    <string name="upload">上传</string>
+    <string name="example">示例</string>
+
+
+    <string name="wallet">钱包</string>
+    <string name="wallet_my_coin">我的T币</string>
+    <string name="find_faster_service">通过下面服务，更快找到另一半</string>
+    <string name="wallet_match_two">匹配两个</string>
+    <string name="ensure_buy">确认购买</string>
+
+    <string name="invite_friend">邀请好友</string>
+    <string name="invite_code">邀请码</string>
+    <string name="your_invite_code">您的邀请码为： %s</string>
+    <string name="invite_enable_count">还可以邀请&lt;font color="#f87648">%s个人&lt;/font></string>
+    <string name="copy_invite_code">复制邀请码</string>
+    <string name="copy_invite_code_ok">邀请码%s已复制到粘贴板</string>
+    <string name="get_new_invite_code">获取新的邀请码</string>
+
+
+
+    <string name="text_too_little">字数不要少于%s个哦</string>
+    <string name="text_too_much">字数不要多于%s个哦</string>
+    <string name="clean_local_cache">清除本地缓存</string>
+    <string name="clean_local_cache_finish_and_size">已清除本地缓存%s</string>
+    <string name="feedback">意见反馈</string>
+    <string name="feedback_tip_hint">请输入您的意见或建议内容......</string>
+    <string name="give_five_stars">给Ta五星好评</string>
+
+
+    <string name="delete_relation">解除关系</string>
+    <string name="open_other_info">查看对方资料</string>
+    <string name="open_mine_info">查看个人资料</string>
+    <string name="match_had_match_count">你身边有%s人\n在TA相遇了</string>
+    <string name="match_miss_wait_for_next">错过这次，就得等待下一次哦~</string>
+    <string name="match_match_degree">%s%% \n匹配度</string>
+    <string name="match_two">匹配两个</string>
+    <string name="join">加入</string>
+
+
+    <string name="no_more_messages">没有了</string>
+    <string name="chat_up_cancel_record">松开手指，取消发送</string>
+    <string name="chat_move_cancel_record">手指上滑，取消发送</string>
+    <string name="chat_down_voice">按下 说话</string>
+    <string name="chat_up_send">松开 结束</string>
+    <string name="chat_too_short">录音时间太短</string>
+    <string name="chat_too_long">录音时限60秒，还剩%s秒</string>
+
+
+    <string name="over">以上</string>
+    <string name="no_limit">不限</string>
+    <string name="introduction">自我介绍</string>
+    <string name="no_introduction">这个家伙很懒，什么都没有留下。</string>
+
+    <string name="friend_standard">交友标准</string>
+    <string name="age">年龄</string>
+    <string name="year_of_age">岁</string>
+    <string name="body_height">身高</string>
+    <string name="base_info">基本资料</string>
+    <string name="nickname">昵称</string>
+    <string name="sex">性别</string>
+    <string name="birthday">生日</string>
+    <string name="live_area">居住地</string>
+    <string name="school">学校</string>
+    <string name="college">学院</string>
+    <string name="grade">年级</string>
+    <string name="hometown">家乡</string>
+    <string name="hobby">兴趣爱好</string>
+    <string name="no_hobby_label">还没有标签</string>
+    <string name="edit_new_hobby_label">自定义新标签</string>
+
+    <string name="tip_picture_save_fail">图片保存失败，请再次尝试保存！</string>
+    <string name="tip_picture_save_ok">图片保存成功</string>
+    <string name="tip_picture_has_save_to">图片已保存至 %s 文件夹</string>
+    <string name="tip_voice_has_save_to">语音已保存至 %s 文件夹</string>
+    <string name="tip_voice_save_fail">语音保存失败，请再次尝试保存！</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

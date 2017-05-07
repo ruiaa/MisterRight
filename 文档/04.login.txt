@@ -1,0 +1,112 @@
+2．	登录接口
+====================================================================================================
+2.1	用密码登录：(ok)
+    原接口:POST /user/login/pwd
+    现接口:POST http://119.29.229.131:8090/misterright/appLoginAction?handler=userLogin
+ client->server:
+    {
+        "phone_num":"13023282871",
+        "pwd": "md5",
+    }
+ server->client:
+    {
+        "code":200,
+        "data": {
+            "hx_user": "111111" // 环信账号
+            "hx_pwd": "" // 环信密码
+            "available_time": 14400000000, # token截至有效时间
+            "token": "xasfda", 
+            "user_info":{
+                'map_info': {       # 个人其他信息
+                    "head_url": "头像地址"
+                    "album": [],
+                    "introduction": "test_introduction",
+                    "friend_standard": {},
+                    "base_info": {
+                        "school": "中山大学",
+                        "grade":2014
+                    },
+                    "hobby": {}
+                }, 
+                'uid': 10002,   # 用户id
+                'name': "test", 
+                'sex': false, 
+                'job': "student", 
+                'brithday': "2010-01-01"
+                "hx_user": ""
+            }
+        }
+    }
+
+====================================================================================================
+2.2	用token登录：(ok)
+   原接口:POST /user/login/token
+    现接口:POST http://119.29.229.131:8090/misterright/appLoginAction?handler=tokenLogin
+    如果失败则表示需要重新走一下/user/login/pwd
+client->server:
+    {
+        "phone_num":"13023282871",
+        "token": "xasfda",
+    }
+server->client:
+    {
+        "code":200,
+        "data": {
+            "hx_user": "111111" // 环信账号
+            "hx_pwd": "" // 环信密码
+            "user_info":{
+                'map_info': {       # 个人其他信息
+                    "head_url": "头像地址"
+                    "album": [],
+                    "introduction": "test_introduction",
+                    "friend_standard": {},
+                    "base_info": {
+                        "school": "中山大学",
+                        "grade":2014
+                    },
+                    "hobby": {}
+                }, 
+                'uid': 10002,   # 用户id
+                'name': "test", 
+                'sex': false, 
+                'job': "student", 
+                'brithday': '2010-01-01'
+                "hx_user": ""
+            }
+        }
+    }
+    
+====================================================================================================
+====================================================================================================
+3.1	忘记密码（获取短信）：(ok)
+    原接口:GET /pwd/forget/msg_code
+    现接口:POST http://119.29.229.131:8090/misterright/appLoginAction?handler=getMsgCode
+   client->server:
+    {
+        "phone_num":"13023282871",
+    }
+   server->client:
+    {
+        "code": 200,
+        "data": {}        
+    }
+    
+    
+====================================================================================================   
+3.2	忘记密码（重设密码）：(ok)
+    原接口:POST /pwd/forget/msg_code
+    现接口:POST http://119.29.229.131:8090/misterright/appLoginAction?handler=forgetUserPwd
+    client->server:
+    {
+        "phone_num":"13023282871",
+        "valid_code":"234567",
+        "new_pwd":"md5",
+    }
+server->client:
+    {
+        "code": 200,
+        "data": {
+            "hx_user": "13413023282871"   // 环信帐号
+            "hx_pwd": "134130232822323871"   // 环信密码
+        }        
+    }

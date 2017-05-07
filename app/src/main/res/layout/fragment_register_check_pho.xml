@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="counter"
+            type="android.databinding.ObservableInt"/>
+
+        <import type="com.misterright.MisterConfig"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_top_toolbar"/>
+
+        <!--输入-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/register_input_left_right_margin"
+            android:layout_marginRight="@dimen/register_input_left_right_margin"
+            android:orientation="vertical"
+            >
+
+            <!--    电话      -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_input_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@string/phone_number"/>
+
+                <EditText
+                    android:id="@+id/register_check_pho_input_pho"
+                    style="@style/register_input_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/hint_input_phone_number"
+                    android:inputType="phone"
+                    android:maxLength="@{MisterConfig.PHONE_NUM}"
+                    android:maxLines="1"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    验证码     -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_input_height"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/register_check_pho_input_valid_code_text"
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@string/valid_code"/>
+
+                <Button
+                    android:id="@+id/register_check_pho_get_valid_code"
+                    style="@style/text_4_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_button_get_valid_code"
+                    android:minWidth="@dimen/register_get_valid_minwidth"
+                    android:clickable="@{0>=counter.get()}"
+                    android:text="@{0>=counter.get() ? @string/get_valid_code:String.format(@string/get_valid_code_wait,counter.get()) }"
+                    />
+
+                <EditText
+                    android:id="@+id/register_check_pho_input_valid_code"
+                    style="@style/register_input_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/register_check_pho_get_valid_code"
+                    android:layout_toRightOf="@id/register_check_pho_input_valid_code_text"
+                    android:background="@null"
+                    android:hint="@string/hint_input_valid_code"
+                    android:inputType="number"
+                    android:maxLength="@{MisterConfig.VALID_CODE}"
+                    android:maxLines="1"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"/>
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    密码     -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_input_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/register_check_pho_password_text"
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@{@string/password+`    `}"/>
+
+                <EditText
+                    android:id="@+id/register_check_pho_input_password"
+                    style="@style/register_input_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/hint_input_password"
+                    android:inputType="textPassword"
+                    android:maxLength="@{MisterConfig.PWD_COUNT_MAX}"
+                    android:maxLines="1"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+            <!--    确认密码    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_input_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@{@string/sure+`    `}"/>
+
+                <EditText
+                    android:id="@+id/register_check_pho_input_pwd_sure"
+                    style="@style/register_input_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/hint_input_password_repeat"
+                    android:inputType="textPassword"
+                    android:maxLength="@{MisterConfig.PWD_COUNT_MAX}"
+                    android:maxLines="1"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_input_height"/>
+
+        <!--下一步-->
+        <Button
+            android:id="@+id/register_check_pho_next_step"
+            style="@style/text_1_white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_marginLeft="@dimen/register_next_step_margin"
+            android:layout_marginRight="@dimen/register_next_step_margin"
+            android:background="@drawable/bg_button_next_step"
+            android:text="@string/next_step"/>
+
+    </LinearLayout>
+
+</layout>

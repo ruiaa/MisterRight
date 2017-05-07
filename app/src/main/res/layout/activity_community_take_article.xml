@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.misterright.MisterConfig"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include layout="@layout/view_toolbar"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                >
+
+                <EditText
+                    style="@style/text_0_grey_5"
+                    android:id="@+id/community_take_article_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/community_take_article_title_height"
+                    android:paddingLeft="@dimen/community_take_article_padding"
+                    android:paddingRight="@dimen/community_take_article_padding"
+                    android:gravity="center_vertical|left|start"
+
+                    android:maxLength="@{MisterConfig.COMMUNITY_TITLE_MAX_COUNT}"
+                    android:hint="@string/community_article_input_title_hint"
+                    android:background="@color/white"
+                    />
+
+                <include layout="@layout/view_divider_hor"/>
+
+                <EditText
+                    style="@style/text_2_grey_4"
+                    android:id="@+id/community_take_article_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/community_take_article_content_height"
+                    android:paddingLeft="@dimen/community_take_article_padding"
+                    android:paddingRight="@dimen/community_take_article_padding"
+                    android:paddingTop="@dimen/community_take_article_padding"
+                    android:gravity="start|left"
+                    android:hint="@string/community_article_input_content_hint"
+                    android:background="@color/white"
+                    />
+
+                <!--图片-->
+                <com.misterright.ui.widget.NineImg
+                    android:id="@+id/community_take_article_img_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_8"
+                    app:nineimg_max_count="9"
+                    app:nineimg_h_spacing="@dimen/dp_6"
+                    app:nineimg_w_spacing="@dimen/dp_6"
+                    app:nineimg_with_selector="true"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</layout>

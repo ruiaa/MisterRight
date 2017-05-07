@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_200"
+    android:layout_height="@dimen/dp_200"
+    android:orientation="vertical"
+    android:background="@drawable/chat_voice_record_anim_bg"
+    >
+
+    <RelativeLayout
+        android:id="@+id/chat_voice_recording_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_180"
+        android:layout_alignParentTop="true"
+        >
+
+        <ImageView
+            android:id="@+id/chat_voice_recording_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/chat_recording_vol_cancel"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageView
+            android:id="@+id/chat_voice_recording_mic"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/chat_recording_mic"/>
+
+        <ImageView
+            android:id="@+id/chat_voice_recording_animate"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/chat_voice_recording_mic"
+            android:src="@drawable/chat_voice_volume_anim"
+            android:scaleType="fitStart"
+            />
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:id="@+id/chat_voice_recording_hint_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/chat_voice_record_anim_hint_bg"
+            />
+
+        <TextView
+            style="@style/text_4_white"
+            android:id="@+id/chat_voice_recording_hint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            />
+    </FrameLayout>
+
+
+</RelativeLayout>

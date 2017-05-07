@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="communityArticle"
+            type="com.misterright.model.entity.CommunityArticle"/>
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.DateUtil"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_4"
+        >
+        <!--头像-->
+        <com.misterright.ui.widget.ImgViewGlide
+            android:id="@+id/item_article_outline_header"
+            android:layout_width="@dimen/community_article_outline_header"
+            android:layout_height="@dimen/community_article_outline_header"
+            android:layout_alignParentLeft="true"
+            app:imageUrl="@{communityArticle.showHeadUrl}"
+            app:is_circle="true"
+            app:is_square="true"
+            />
+
+        <!--昵称-->
+        <TextView
+            style="@style/text_5_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/community_article_outline_header"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_toRightOf="@id/item_article_outline_header"
+            android:gravity="center_vertical"
+            android:textColor="@{communityArticle.sex ? @color/text_blue:@color/text_red}"
+            android:text="@{communityArticle.showName}"
+            />
+
+        <!--回复-->
+        <TextView
+            android:id="@+id/item_article_outline_replay"
+            style="@style/text_5_grey_4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/community_article_outline_header"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@mipmap/icon_replay"
+            android:gravity="center_vertical"
+            android:text="@{`  `+String.valueOf(communityArticle.replyCount)}"
+            />
+
+        <!--时间-->
+        <TextView
+            android:id="@+id/item_article_outline_time"
+            style="@style/text_5_grey_4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/community_article_outline_header"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_toLeftOf="@id/item_article_outline_replay"
+            android:gravity="center_vertical"
+            android:text="@{DateUtil.toDateStringUse_(communityArticle.timeStamp*1000)}"
+            />
+    </RelativeLayout>
+
+</layout>

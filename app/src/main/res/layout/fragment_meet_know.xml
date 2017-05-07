@@ -1,0 +1,235 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.misterright.util.AppUtil"/>
+        <import type="com.misterright.model.MisterData"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@{AppUtil.Status_Bar_Height}"
+
+            android:background="@drawable/toolbar_background"
+            android:elevation="@dimen/elevation_toolbar"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                >
+
+                <ImageView
+                    android:id="@+id/meet_know_notice"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/icon_notice"
+                    />
+
+                <ImageView
+                    android:id="@+id/meet_know_message"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_32"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/icon_message"
+                    />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/text_1_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    />
+
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="@dimen/elevation_accent_middle"
+            >
+
+            <!--横幅背景  聊天 写笔记-->
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/meet_know_appbarlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                >
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/meet_know_collapsing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll|snap">
+
+                    <!--横幅背景  聊天 写笔记-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <!--横幅背景-->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/meet_know_banner"/>
+
+                            <TextView
+                                android:id="@+id/meet_know_know_day_count"
+                                style="@style/text_4_white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dp_28"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/bg_had_know_day"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="@dimen/dp_20"
+                                android:paddingRight="@dimen/sp_6"
+                                android:text="@{String.format( @string/day_count_had_know , MisterData.getInstance().getKnowDay())}"
+                                />
+                        </RelativeLayout>
+
+                        <!--聊天 写笔记-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/meet_know_open_chat_takenote_height"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <LinearLayout
+                                android:id="@+id/meet_know_open_chat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/dp_32">
+
+                                <ImageView
+                                    android:id="@+id/meet_know_open_chat_img"
+                                    android:layout_width="@dimen/meet_know_open_chat_takenote_img"
+                                    android:layout_height="@dimen/meet_know_open_chat_takenote_img"
+                                    android:layout_marginRight="@dimen/dp_16"
+                                    android:src="@mipmap/meet_icon_chat"/>
+
+                                <TextView
+                                    style="@style/text_2_grey_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/chat"/>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/dp_0.5"
+                                android:layout_height="match_parent"
+                                android:background="@color/divider"/>
+
+                            <LinearLayout
+                                android:id="@+id/meet_know_token_note"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/dp_32">
+
+                                <ImageView
+                                    android:layout_width="@dimen/meet_know_open_chat_takenote_img"
+                                    android:layout_height="@dimen/meet_know_open_chat_takenote_img"
+                                    android:layout_marginRight="@dimen/dp_16"
+                                    android:src="@mipmap/meet_icon_note"/>
+
+                                <TextView
+                                    style="@style/text_2_grey_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/take_notes"/>
+                            </LinearLayout>
+<!--
+                            <TextView
+                                android:id="@+id/meet_know_token_note"
+                                style="@style/text_2_grey_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:drawableLeft="@mipmap/meet_icon_note"
+                                android:gravity="left|center_vertical"
+                                android:paddingLeft="32dp"
+                                android:text="@{`  `+@string/take_notes}"/>-->
+
+                        </LinearLayout>
+
+                        <include layout="@layout/view_divider_hor"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_6"
+                            android:background="@color/globalBackgroundColor"
+                            />
+                        <include layout="@layout/view_divider_hor"/>
+
+                    </LinearLayout>
+
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+
+            <!--    笔记列表    -->
+            <com.misterright.ui.widget.MultiSwipeRefreshLayout
+                android:id="@+id/meet_know_noteswipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/meet_know_notelist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </com.misterright.ui.widget.MultiSwipeRefreshLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </LinearLayout>
+
+
+</layout>

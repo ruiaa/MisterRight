@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.misterright.ui.status.MeetMatchFragment">
+
+    <data>
+        <variable
+            name="otherInfo"
+            type="com.misterright.model.entity.UserInfo"
+            />
+        <variable
+            name="time"
+            type="android.databinding.ObservableLong"
+            />
+        <variable
+            name="matchDegree"
+            type="String"/>
+        <import type="com.misterright.model.entity.MapInfo"/>
+        <import type="com.misterright.util.StringStyles.RichText"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/meet_into_match_bg"
+        >
+
+        <!--标题 时钟 图片 资料-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--标题-->
+            <include layout="@layout/view_toolbar"/>
+
+            <!--时钟-->
+            <include
+                layout="@layout/view_timer"
+                bind:showHour="@{false}"
+                bind:time="@{time.get()}"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_12"/>
+
+            <!--图片 资料-->
+            <RelativeLayout
+                android:layout_width="@dimen/meet_match_head"
+                android:layout_height="@dimen/meet_match_head_info"
+                android:layout_marginLeft="@dimen/meet_match_head_margin_h"
+                android:layout_marginRight="@dimen/meet_match_head_margin_h"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/meet_match_info_bg"
+                >
+
+                <!--头像-->
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:id="@+id/match_head"
+                    android:layout_width="@dimen/meet_match_head"
+                    android:layout_height="@dimen/meet_match_head"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    app:is_square="true"
+                    app:blur_degree="25"
+                    app:corner="@dimen/dp_8"
+                    app:corner_type="12"
+                    app:head="@{otherInfo.getHeadUrl()}"
+                    />
+
+                <!--匹配度-->
+                <TextView
+                    style="@style/text_4_grey_4"
+                    android:id="@+id/match_match_degree"
+                    android:layout_width="@dimen/meet_match_match_degree_w"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/match_head"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="@{RichText.newRichText(String.format(@string/match_match_degree,matchDegree)).setSizeInPx(matchDegree,(int)@dimen/sp_22).build()}"
+                    />
+
+                <!--姓名 兴趣 标签-->
+                <android.support.percent.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_below="@+id/match_head"
+                    android:layout_toLeftOf="@id/match_match_degree"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <!--姓名 -->
+                    <LinearLayout
+                        android:id="@+id/meet_match_nameinfo"
+                        android:layout_width="match_parent"
+                        app:layout_heightPercent="50%"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            style="@style/text_2_grey_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dp_8"
+                            android:text="@{otherInfo.mapInfo.baseInfo.getNicknameStr()}"/>
+
+<!--                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            android:background="@drawable/sex_background"
+                            android:drawableLeft="@mipmap/icon_male"
+                            android:drawablePadding="4dp"
+                            android:text="@{`  `+otherInfo.mapInfo.baseInfo.age[0]}"
+                            />-->
+
+                        <TextView
+                            style="@style/text_3_grey_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{otherInfo.mapInfo.baseInfo.getSchoolStr()+`  `}"/>
+                        <TextView
+                            style="@style/text_3_grey_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{otherInfo.mapInfo.baseInfo.getGradeStr()}"
+                            />
+
+                    </LinearLayout>
+
+                    <!--兴趣 标签-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        app:layout_heightPercent="50%"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@id/meet_match_nameinfo"
+                        >
+
+                        <com.misterright.ui.widget.LabelLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            app:line_count="1"
+                            app:horizontal_spacing="@dimen/dp_8"
+                            app:child_layout="@layout/view_label"
+                            app:textList="@{otherInfo.mapInfo.getOneListHobby()}"
+                            />
+
+                    </RelativeLayout>
+
+                </android.support.percent.PercentRelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--底部选择-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/meet_match_dislike"
+                android:layout_width="@dimen/meet_match_like_button_size"
+                android:layout_height="@dimen/meet_match_like_button_size"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/meet_match_like_dislike_margin"
+                android:padding="@dimen/dp_12"
+                android:src="@mipmap/meet_icon_close"
+                android:background="@drawable/border_circle"
+                />
+
+            <ImageButton
+                android:id="@+id/meet_match_open_info"
+                android:layout_width="@dimen/meet_match_info_button_size"
+                android:layout_height="@dimen/meet_match_info_button_size"
+                android:padding="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/meet_match_like_info_between"
+                android:layout_marginRight="@dimen/meet_match_like_info_between"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/meet_icon_user"
+                android:background="@drawable/grey_circle_background"
+                />
+
+            <ImageButton
+                android:id="@+id/meet_match_like"
+                android:layout_width="@dimen/meet_match_like_button_size"
+                android:layout_height="@dimen/meet_match_like_button_size"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/meet_match_like_dislike_margin"
+                android:padding="@dimen/dp_12"
+                android:src="@mipmap/icon_chat"
+                android:background="@drawable/border_circle"
+                />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

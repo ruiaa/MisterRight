@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="day"
+            type="int"/>
+        <variable
+            name="selected"
+            type="boolean"/>
+        <import type="com.misterright.ui.mine.WalletMatchTwoFragment"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/wallet_item_height"
+        >
+        
+        <ImageView
+            android:id="@+id/item_buy_match_two_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@{WalletMatchTwoFragment.getBuyTypeIcon(day)}"/>
+
+        <TextView
+            style="@style/text_2_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_buy_match_two_icon"
+            android:text="@{WalletMatchTwoFragment.getBuyTypeTip(day)}"
+            />
+
+        <Button
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:background="@drawable/select_circle"
+            android:text=""
+            app:selected="@{selected}"/>
+
+    </RelativeLayout>
+
+</layout>

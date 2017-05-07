@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/chat_recording_vol1" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol2" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol3" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol4" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol5" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol6" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol7" android:duration="100" />
+    <item android:drawable="@mipmap/chat_recording_vol8" android:duration="100" />
+
+</animation-list>

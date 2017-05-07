@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.misterright.util.AppUtil"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingTop="@{AppUtil.Status_Bar_Height}"
+            android:layout_gravity="top"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/toolbar_background"
+            android:elevation="@dimen/elevation_toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:minHeight="?attr/actionBarSize"
+                >
+                <ImageView
+                    android:id="@+id/toolbar_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingRight="@dimen/dp_24"
+                    android:gravity="center"
+                    android:src="@mipmap/nav_back"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_rect_circle_white"
+                    >
+                    <TextView
+                        style="@style/text_1_white"
+                        android:id="@+id/community_article_outline_list_hot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp_20"
+                        android:paddingRight="@dimen/dp_12"
+                        android:paddingTop="@dimen/dp_6"
+                        android:paddingBottom="@dimen/dp_6"
+                        android:text="@string/community_hot_post"
+                        android:textColor="@color/switch_blue_grey"
+                        />
+
+                    <View
+                        android:layout_width="@dimen/dp_0.5"
+                        android:layout_height="match_parent"
+                        android:background="@color/text_blue"
+                        />
+
+                    <TextView
+                        style="@style/text_1_white"
+                        android:id="@+id/community_article_outline_list_new"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp_12"
+                        android:paddingRight="@dimen/dp_20"
+                        android:paddingTop="@dimen/dp_6"
+                        android:paddingBottom="@dimen/dp_6"
+                        android:text="@string/community_new_post"
+                        android:textColor="@color/switch_blue_grey"
+                        />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/toolbar_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dp_12"
+                    android:src="@mipmap/icon_write"
+                    />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/community_article_outline_list_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="com.misterright.MisterConfig"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_toolbar"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_top_toolbar"/>
+
+        <!--输入-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/register_input_left_right_margin"
+            android:layout_marginRight="@dimen/register_input_left_right_margin"
+            android:orientation="vertical">
+
+            <!--邀请码-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_input_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/register_input_text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/register_input_left_right_margin"
+                    android:text="@string/invite_code"/>
+
+                <EditText
+                    android:id="@+id/register_check_invite_input_invite_code"
+                    style="@style/register_input_text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/hint_get_invite_code_from_friend"
+                    bind:hintTextSize="@{@dimen/register_input_hint_text_size}"
+                    android:inputType="number"
+                    android:maxLength="@{MisterConfig.INVITE_CODE}"
+                    android:maxLines="1"/>
+            </LinearLayout>
+
+            <include layout="@layout/view_divider_hor"/>
+
+        </LinearLayout>
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_input_height"/>
+
+        <!--下一步-->
+        <Button
+            android:id="@+id/register_check_invite_next"
+            style="@style/text_1_white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_marginLeft="@dimen/register_next_step_margin"
+            android:layout_marginRight="@dimen/register_next_step_margin"
+            android:background="@drawable/bg_button_next_step"
+            android:text="@string/next_step"/>
+
+    </LinearLayout>
+
+</layout>

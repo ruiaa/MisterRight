@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--遇见你 爱上你-->
+        <RelativeLayout
+            android:layout_width="@dimen/register_meet_and_love"
+            android:layout_height="@dimen/register_meet_and_love"
+            app:layout_marginBottomPercent="60%"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#d2739fda">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:src="@mipmap/login_ta_bg"/>
+            <TextView
+                style="@style/text_3_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/meet_you_and_love"/>
+        </RelativeLayout>
+
+        <!--注册 or 登录-->
+        <LinearLayout
+            android:id="@+id/register_or_login_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_marginLeft="@dimen/register_button_margin"
+            android:layout_marginRight="@dimen/register_button_margin"
+            android:layout_marginBottom="@dimen/big_button_height"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                style="@style/text_1_white"
+                android:id="@+id/register_or_login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_register"
+                android:text="@string/register_user"/>
+
+            <Space
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="match_parent"/>
+
+            <Button
+                style="@style/text_1_white"
+                android:id="@+id/register_or_login_login"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_register_login"
+                android:text="@string/login"
+                />
+
+        </LinearLayout>
+
+        <!--你知道怎样才能使一个人记住你吗？-->
+        <TextView
+            style="@style/text_2_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/register_or_login_layout"
+            android:lineSpacingExtra="@dimen/sp_6"
+            android:text="@string/how_to_let_one_remember_you"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+</layout>

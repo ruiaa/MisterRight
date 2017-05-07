@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tool="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="communityArticle"
+            type="com.misterright.model.entity.CommunityArticle"/>
+        <import type="android.view.View"/>
+        <import type="com.misterright.util.DateUtil"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_16"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_16"
+        >
+
+        <!--图片 标题 概要-->
+        <!--316  100  154+8+154 208+8+100(100+8+100) -->
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!--右上  1 -->
+            <com.misterright.ui.widget.ImgViewGlide
+                android:id="@+id/item_article_outline_img_1"
+                android:layout_height="400dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:visibility="@{communityArticle.getImgCount()>=1 ? View.VISIBLE:View.GONE}"
+                app:imageUrl="@{communityArticle.getImg(0)}"
+                app:is_square="true"
+                app:layout_widthPercent="@{communityArticle.getImgCount()==1 ? 0.316f:(communityArticle.getImgCount()==2 ? 0.487f : 0.316f)}"
+                />
+
+            <!--左上 2 -->
+            <!--marginBottom 16-->
+            <com.misterright.ui.widget.ImgViewGlide
+                android:id="@+id/item_article_outline_img_2"
+                android:layout_height="400dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:visibility="@{communityArticle.getImgCount()>=2 ? View.VISIBLE:View.GONE}"
+                app:imageUrl="@{communityArticle.getImg(1)}"
+                app:is_square="true"
+                app:layout_widthPercent="@{communityArticle.getImgCount()==1 ? (0.0f):(communityArticle.getImgCount()==2 ? 0.487f : 0.658f)}"
+                />
+
+            <!--右下 3 -->
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_article_outline_img_1"
+                android:layout_alignBottom="@id/item_article_outline_img_2"
+                android:layout_alignParentRight="true"
+                android:visibility="@{communityArticle.getImgCount()>=3 ? View.VISIBLE:View.GONE}"
+                app:layout_widthPercent="@{communityArticle.getImgCount()==1 ? (0.0f):(communityArticle.getImgCount()==2 ? 0.0f : 0.316f)}"
+                >
+
+                <com.misterright.ui.widget.ImgViewGlide
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:visibility="@{communityArticle.getImgCount()>=3 ? View.VISIBLE:View.GONE}"
+                    app:imageUrl="@{communityArticle.getImg(2)}"
+                    app:is_square="true"
+                    />
+
+                <TextView
+                    style="@style/text_4_white"
+                    android:layout_width="wrap_content"
+                    android:minWidth="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_32"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:background="@color/transparent_half"
+                    android:visibility="@{communityArticle.getImgCount()>=4 ? View.VISIBLE:View.GONE}"
+                    android:text="@{String.valueOf(communityArticle.getImgCount()-3)+` +`}"
+                    />
+
+            </RelativeLayout>
+
+            <!--文字  标题 内容-->
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/item_article_outline_img_2"
+                app:layout_widthPercent="@{communityArticle.getImgCount()==1 ? 0.658f:1}"
+                >
+
+                <!--标题-->
+                <TextView
+                    android:id="@+id/item_article_outline_title"
+                    style="@style/text_1_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:text="@{communityArticle.topicHeadDecode}"
+                    />
+
+                <!--内容-->
+                <TextView
+                    android:id="@+id/item_article_outline_content"
+                    style="@style/text_3_grey_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/item_article_outline_title"
+                    android:lineSpacingExtra="@dimen/sp_4"
+                    android:text="@{communityArticle.outlineDecode.text}"
+                    />
+
+            </RelativeLayout>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_12"/>
+
+        <!--头像 昵称 时间 回复数量-->
+        <include
+            layout="@layout/view_community_author_info"
+            bind:communityArticle="@{communityArticle}"
+            />
+
+    </LinearLayout>
+
+</layout>

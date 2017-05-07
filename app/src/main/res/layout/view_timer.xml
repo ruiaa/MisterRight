@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="time"
+            type="long"
+            />
+        <variable
+            name="showHour"
+            type="boolean"
+            />
+        <import type="android.view.View"/>
+    </data>
+
+
+
+        <LinearLayout
+            android:id="@+id/view_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_4"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf(time/3600/10)}"
+                android:visibility="@{showHour ? View.VISIBLE : View.GONE}"
+                />
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf((time/3600)%10)}"
+                android:visibility="@{showHour ? View.VISIBLE : View.GONE}"
+                />
+
+            <TextView
+                style="@style/timer_colon_style"
+                android:text=":"
+                android:visibility="@{showHour ? View.VISIBLE : View.GONE}"
+                />
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf((time%3600)/60/10)}"
+                />
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf(((time%3600)/60)%10)}"
+                />
+
+            <TextView
+                style="@style/timer_colon_style"
+                android:text=":"
+                />
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf((time%60)/10)}"
+                />
+
+            <TextView
+                style="@style/timer_number_style"
+                android:text="@{String.valueOf((time%60)%10)}"
+                />
+        </LinearLayout>
+
+
+</layout>

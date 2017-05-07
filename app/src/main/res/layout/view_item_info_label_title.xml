@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="key"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+
+        <variable
+            name="editable"
+            type="boolean"/>
+        <variable
+            name="editing"
+            type="boolean"/>
+        <variable
+            name="mapInfo"
+            type="com.misterright.model.entity.MapInfo"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_detail_item_title_height"
+        android:layout_marginTop="@dimen/dp_8"
+        android:visibility="@{(editing &amp;&amp; type==mapInfo.INFO_TYPE_INTRODUCTION) ? View.GONE:View.VISIBLE}"
+        >
+
+        <TextView
+            style="@style/text_label_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@{mapInfo.getInfoTypeIcon(type)}"
+            android:text="@{`   ` + key}"/>
+
+        <TextView
+            style="@style/text_6_blue"
+            android:id="@+id/info_detail_intro_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/border_rect_grey"
+            android:drawableLeft="@mipmap/icon_plus"
+            android:drawablePadding="@dimen/dp_4"
+            android:padding="@dimen/dp_4"
+            android:text="@string/edit"
+            android:visibility="@{editable ? View.VISIBLE : View.GONE}"/>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.misterright">
+
+    <uses-sdk tools:overrideLibrary="io.github.rockerhieu.emojicon,io.github.rockerhieu.emojiconize"/>
+
+    <!-- 网络 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 储存盘读写 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 多媒体 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <!-- 环信 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="MisterRight"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+
+        <!-- Glide 配置 -->
+        <meta-data
+            android:name="com.misterright.util.net.ImgSizeGlideModule"
+            android:value="GlideModule"/>
+
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="misterright#misterright"/>
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true"/>
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- 登录 注册 -->
+        <activity
+            android:name=".ui.register.LoginActivity"
+            android:theme="@style/ActivityRegister"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 主界面 -->
+        <activity android:name=".ui.MainActivity"
+                  android:screenOrientation="portrait"
+            />
+
+        <!-- 我 -->
+        <activity android:name=".ui.mine.AccountActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.mine.FeedbackActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.mine.InviteCodeActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.mine.NoticeActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.mine.WalletActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.mine.ResetPwdActivity"
+                  android:screenOrientation="portrait"
+            />
+
+
+        <!--相遇-->
+        <!-- 聊天 -->
+        <activity
+            android:name=".ui.status.ChatActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"
+            />
+        <!-- 笔记 -->
+        <activity android:name=".ui.status.TakeNoteActivity"
+                  android:screenOrientation="portrait"
+            />
+        <!-- 个人资料 -->
+        <activity android:name=".ui.info.InfoActivity"
+                  android:screenOrientation="portrait"
+            />
+
+
+        <!--社区-->
+        <activity
+            android:name=".ui.community.TakeArticleActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.community.ArticleOutlineListActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.community.ArticleDetailActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"
+                  android:screenOrientation="portrait"
+            />
+
+
+
+
+
+        <!-- 大图 -->
+        <activity android:name=".ui.PictureActivity"
+                  android:screenOrientation="portrait"
+            />
+
+        <!-- 图片选择 -->
+        <activity
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+    </application>
+
+</manifest>
